@@ -1,0 +1,24 @@
+.sidebar{
+    position: absolute;
+    top: -80px;
+    right: 0px;
+    z-index: 20;
+    box-shadow: 0px 0px 10px black;
+    height: 100vh;
+    background-color: #E2E8F0;
+    /* background-color: #0891B2; */
+    width: 350px;
+    /* transition: all 2s ease-out; */
+    border-radius: 10px 0px 0px 10px;
+    animation: slider 500ms ease-out;
+    padding: 0px 15px;
+}
+
+@keyframes slider{
+    0%{
+        right: -350px;
+    }
+    100%{
+        right: 0px;
+    }
+}
