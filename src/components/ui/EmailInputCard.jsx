@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { GiThink } from "react-icons/gi";
+import { RotatingLines } from "react-loader-spinner";
+import { ToastContainer, toast } from "react-toastify";
 
 const EmailInputCard = () => {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const userEmail = {
     email,
@@ -11,6 +14,7 @@ const EmailInputCard = () => {
 
   const forgotPasswrodHandler = async () => {
     try {
+      setIsLoading(true);
       const res = await axios.post(
         "http://localhost:3002/auth/forgotpassword",
         userEmail,
@@ -22,8 +26,30 @@ const EmailInputCard = () => {
       );
 
       console.log(res);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
+      const { data } = error.response.data;
+      if (error.response.data.status === "error") {
+        toast.error(
+          `${
+            Object.keys(data).length === 0
+              ? error.response.data.message
+              : data[0].msg
+          }`,
+          {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+        );
+        setIsLoading(false);
+      }
     }
   };
   return (
@@ -36,7 +62,7 @@ const EmailInputCard = () => {
           <h1 className="text-center text-2xl min-[500px]:text-3xl mb-3">
             Forgot your password
           </h1>
-          <p className="text-center ">
+          <p className="text-center pt-4">
             Please enter email address you'd like your password reset
             information sent to
           </p>
@@ -55,6 +81,32 @@ const EmailInputCard = () => {
           <button className={`btn w-full`} onClick={forgotPasswrodHandler}>
             Forgot Password
           </button>
+          {isLoading ? (
+            <div className="loader">
+              <RotatingLines
+                strokeColor="grey"
+                // strokeColor="#064E3B"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="30"
+                visible={true}
+              />
+            </div>
+          ) : (
+            ""
+          )}
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
       </div>
     </div>
