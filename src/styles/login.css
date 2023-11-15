@@ -1,0 +1,101 @@
+/* .bg-image {
+  background-image: url("https://cdn.dribbble.com/users/1947758/screenshots/4705733/app-loading-screen.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+} */
+
+/* .content {
+  box-shadow: 0px 0px 10px #334155;
+} */
+.inputs input {
+  position: relative;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: transparent;
+  /* border: 1px #fff solid; */
+  box-shadow: 0px 0px 4px #fff;
+  /* color: #FAFAF9; */
+  font-weight: 500;
+  z-index: 2;
+}
+
+.inputs input:focus {
+  outline: none;
+  /* border: 1px solid #E11D48; */
+  box-shadow: 0px 0px 6px #0F172A;
+  background-color: #155E75;
+}
+/* .input{
+    border: 1px black solid;
+} */
+
+.btn {
+  background-color: #FDBA74;
+  /* background-color: #0284C7; */
+  /* width: 100%; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* color: #fff; */
+  /* color: #FAFAF9; */
+  border-radius: 6px;
+  /* letter-spacing: 1px; */
+  font-size: 20px;
+  font-weight: 300;
+  box-shadow: 2px 2px 10px #0F172A;
+
+  /* background: linear-gradient(
+    to right,
+    #c084fc,
+    #a78bfa,
+    #818cf8,
+    #60a5fa,
+    #38bdf8,
+    #22d3ee
+  ); */
+  transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+  box-shadow: 2px 2px 10px #FDBA74;
+  /* background-color: transparent;
+  border: 1px solid #fff; */
+  color: #0F172A;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
+.loader{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  /* background-color: #14532D;
+  border-top: 2px solid #14532D;
+  border-bottom: 2px solid #7C2D12;
+  border-left: 2px solid #581C87;
+  border-right: 2px solid #881337;
+  border-radius: 50%; */
+  /* animation: ; */
+}
+
+.border-color{
+  animation: bordercolor 1s ease-in-out;
+}
+
+@keyframes bordercolor{
+  0%{
+    border: 1px solid #64748B;
+  }
+  25%{
+    border: 1px solid #F43F5E;
+  }
+  50%{
+    border: 1px solid #8B5CF6;
+  }
+  100%{
+    border: 1px solid #10B981;
+  }
+}

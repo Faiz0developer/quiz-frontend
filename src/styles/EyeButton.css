@@ -1,0 +1,69 @@
+.eyeball {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    top: 35%;
+    right: 0.75rem;
+    border: none;
+    background-color: transparent;
+    transform: translate(-50%);
+    z-index: 3;
+}
+
+.beam{
+    position: absolute;
+    top: 53%;
+    right: 1.8rem;
+    clip-path: polygon(50% 50%,100% 0%, 20% 0%,0 100%);
+    width: 100vw;
+    height: 14vw;
+    background-color: #fff;
+    /* z-index: 1; */
+    /* transition: transform 200ms ease-out; */
+    transform-origin: 100% 50%;
+    transform: rotate(4.5deg);
+    animation: upDown 400ms ease-out 150ms;
+}
+
+@keyframes upDown {
+    0%{
+        /* transition: transform 100ms ease-out; */
+        transform: rotate(4.5deg);
+    }
+    20%{
+        /* transition: transform 100ms ease-out; */
+        transform: rotate(5.5deg);
+    }
+    40%{
+        /* transition: transform 100ms ease-out; */
+        transform: rotate(3.5deg);
+    }
+    60%{
+        /* transition: transform 100ms ease-out; */
+        transform: rotate(5.5deg);
+    }
+    80%{
+        /* transition: transform 100ms ease-out; */
+        transform: rotate(3.5deg);
+    }
+    100%{
+        /* transition: transform 100ms ease-out; */
+        transform: rotate(4.5deg);
+    }
+}
+
+
+.passwordHidden {
+    color: #fafaf9;
+    /* border: 1px black solid; */
+  }
+  
+  .passwordShow {
+    color: black;
+    /* border: 2px #e9e909 dotted; */
+    /* border: 1px black solid; */
+  }
+  
