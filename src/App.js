@@ -13,25 +13,50 @@ import SideBAr from "./components/layout/header/SideBAr";
 import CreateQuizPage from "./pages/CreateQuizPage";
 import ReportPage from "./pages/ReportPage";
 import NewQuizPage from "./pages/NewQuizPage";
+import ChangePasswordPage from "./pages/ChangePasswordPage";
+import ChangeNamePage from "./pages/ChangeNamePage";
+import LogoutModel from "./components/LogoutModel";
 
 function App() {
-  const [isSideBarVisibe,setIsSideBarVisibe] = useState(false)
-  const user = useSelector((state) => state.token);
+  const [isSideBarVisibe, setIsSideBarVisibe] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const token = useSelector((state) => state.token.token);
+
+  if (isSideBarVisibe) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "unset";
+  }
+
   return (
     <>
-      {!user.token ? (
+      {!token ? (
         <RegisterLogin />
       ) : (
         <BrowserRouter>
-          <Header setIsSideBarVisibe={setIsSideBarVisibe} isSideBarVisibe={isSideBarVisibe} />
-          <main className="font-[karla] relative px-6 ">
+          <Header
+            setIsSideBarVisibe={setIsSideBarVisibe}
+            isSideBarVisibe={isSideBarVisibe}
+          />
+          <main className="font-[karla] relative px-6">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/create-quiz-home" element={<CreateQuizPage />} />
               <Route path="/report" element={<ReportPage />} />
               <Route path="/create-new-quiz" element={<NewQuizPage />} />
+              <Route path="/change-password" element={<ChangePasswordPage />} />
+              <Route path="/change-name" element={<ChangeNamePage />} />
             </Routes>
-            {isSideBarVisibe?<SideBAr userName={user.name} setIsSideBarVisibe={setIsSideBarVisibe} />:""}
+            {isSideBarVisibe && (
+              <div
+                className="fixed top-0 left-0 w-full h-[100vh] z-10 bg-[#00000033]"
+                onClick={() => setIsSideBarVisibe(false)}
+              />
+            )}
+            {isSideBarVisibe && (
+              <SideBAr setIsSideBarVisibe={setIsSideBarVisibe} isSideBarVisibe={isSideBarVisibe} setLoggingOut={setLoggingOut} />
+            )}
+            {loggingOut && <LogoutModel/>}
           </main>
           <Footer />
         </BrowserRouter>

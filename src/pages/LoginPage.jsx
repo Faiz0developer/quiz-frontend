@@ -42,7 +42,7 @@ const LoginPage = () => {
         const { data } = res;
         setIsLoading(false);
         if (data.status === "success") {
-          dispatch(setToken(data.data));
+          dispatch(setToken(data.data.token));
           navigate("/");
         }
       }
@@ -117,12 +117,19 @@ const LoginPage = () => {
               value={userDetails.password}
               name="password"
             />
-            <button
-              className="text-right text-[#94A3B8] hover:underline hover:text-[#FECACA]"
-              onClick={() => navigate("/forgot-password")}
+            {/* </div> */}
+            {/* <div className="pt-1.5"> */}
+            <h1
+              className="text-right"
+              // onClick={() => navigate("/forgot-password")}
             >
-              Forgot password?
-            </button>
+              <span
+                className="cursor-pointer text-[#94A3B8] hover:underline hover:text-[#FECACA]"
+                onClick={() => navigate("/forgot-password")}
+              >
+                Forgot password?
+              </span>
+            </h1>
           </div>
           <div className="mt-6 relative">
             <button

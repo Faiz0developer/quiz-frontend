@@ -1,17 +1,41 @@
 import React from "react";
 // import { useSelector } from "react-redux";
 import { MdQuiz } from 'react-icons/md';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 import myImg from "../../../assets/quiz4.mp4";
 import "../../../styles/header.css";
-import { Link } from "react-router-dom";
+import { getUserData } from "../../../store/slice/userSlice";
 // import icon from '../../../assets/qa_2190535.png'
 // import SideBAr from "./SideBAr";
 
 const Header = ({ setIsSideBarVisibe, isSideBarVisibe }) => {
+  const token = useSelector(state => state.token.token)
+  const dispatch = useDispatch()
   // const [isSideBarVisibe,setIsSideBarVisibe] = useState(false)
   // const userName = useSelector((state) => state.token.name);
   // const userNameArr = userName.split(" ");
+
+  const getUseerDataHandler = async () =>{
+    setIsSideBarVisibe(true)
+    try {
+      // console.log(token)
+      const res = await axios.get("http://localhost:3002/user",{
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      })
+      const {data} = res
+      // console.log(data)
+      if(data.status==='success'){
+        dispatch(getUserData(data.data))
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <header className="bg-[#155E75] flex justify-between px-6 items-center">
       {/* <div className="flex gap-6"> */}
@@ -42,7 +66,7 @@ const Header = ({ setIsSideBarVisibe, isSideBarVisibe }) => {
       {/* </div> */}
       <div
         className={`flex justify-center items-center h-12 w-12 rounded-full bg-[#94A3B8] cursor-pointer`}
-        onClick={() => setIsSideBarVisibe(true)}
+        onClick={getUseerDataHandler}
       >
         <i
           className="fa-solid fa-user-tie text-3xl"
