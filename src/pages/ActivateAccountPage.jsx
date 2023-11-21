@@ -4,10 +4,11 @@ import EyeButton from "../ui/EyeButton";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { RotatingLines } from "react-loader-spinner";
-// import { useNavigate } from "react-router-dom";
 import OTPModel from "../components/model-ui/SuccessfullModel";
 
 const ActivateAccountPage = () => {
+  const [isEmailTouched, setIsEmailTouched] = useState(false);
+  const [isKeyTouched, setIsKeyTouched] = useState(false);
   const [activationDetails, setActivationDetails] = useState({
     email: "",
     key: "",
@@ -27,27 +28,40 @@ const ActivateAccountPage = () => {
 
   const activateAccountHandler = async () => {
     try {
-      setIsActivating(true);
-      const res = await axios.post(
-        "http://localhost:3002/auth/activateaccount",
-        activationDetails,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+      if (activationDetails.email !== "" && activationDetails.key !== "") {
+        setIsActivating(true);
+        const res = await axios.post(
+          "http://localhost:3002/auth/activateaccount",
+          activationDetails,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const { data } = res;
+        setIsActivating(false);
+        if (data.status === "success") {
+          setIsActivate(true);
+          // navigate("/");
         }
-      );
-      const { data } = res;
-      setIsActivating(false);
-      if (data.status === "success") {
-        setIsActivate(true);
-        // navigate("/");
+      } else {
+        toast.error("Provide all fields", {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (error) {
       const { data } = error.response;
       if (data.status === "error") {
         toast.error(`${data.message}`, {
-          position: "top-center",
+          position: "bottom-left",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -72,19 +86,40 @@ const ActivateAccountPage = () => {
           </h1>
         </div>
         <div className="inputs flex flex-col gap-6 py-6 ">
-          <input
-            type="email"
-            onChange={inputHandler}
-            value={activationDetails.email}
-            name="email"
-            placeholder="Email"
-          />
-          <EyeButton
-            placeholder="Key"
-            onChange={inputHandler}
-            value={activationDetails.key}
-            name="key"
-          />
+          <div className="relative">
+            <input
+              type="email"
+              onChange={inputHandler}
+              value={activationDetails.email}
+              name="email"
+              className={`${
+                activationDetails.email === "" &&
+                isEmailTouched &&
+                "input-error"
+              }`}
+              placeholder="Email"
+              onFocus={() => setIsEmailTouched(false)}
+              onBlur={() => setIsEmailTouched(true)}
+            />
+            {activationDetails.email === "" && isEmailTouched && (
+              <p className="error ">
+                Field must not be empty and must contain @!
+              </p>
+            )}
+          </div>
+          <div className="relative">
+            <EyeButton
+              placeholder="Key"
+              onChange={inputHandler}
+              value={activationDetails.key}
+              name="key"
+              onFocus={() => setIsKeyTouched(false)}
+              onBlur={() => setIsKeyTouched(true)}
+            />
+            {activationDetails.key === "" && isKeyTouched && (
+              <p className="error ">Field must not be empty!</p>
+            )}
+          </div>
         </div>
         <div className="relative flex justify-center mt-8">
           <button className={`btn w-full`} onClick={activateAccountHandler}>
@@ -105,7 +140,7 @@ const ActivateAccountPage = () => {
             ""
           )}
           <ToastContainer
-            position="top-center"
+            position="bottom-left"
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
@@ -122,7 +157,7 @@ const ActivateAccountPage = () => {
         <OTPModel
           successMessage="Account has been activated."
           subTitle="Now login to your account"
-          optionalMessage = 'Now you have one more try for login. If again failed, account will be blocked for 24 hours'
+          optionalMessage="Now you have one more try for login. If again failed, account will be blocked for 24 hours"
         />
       )}
     </div>

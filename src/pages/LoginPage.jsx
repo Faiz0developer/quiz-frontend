@@ -11,6 +11,8 @@ import { setToken } from "../store/slice/tokenSlice";
 import { ToastContainer, toast } from "react-toastify";
 
 const LoginPage = () => {
+  const [isEmailTouched, setIsEmailTouched] = useState(false);
+  const [isPasswordTouched, setIsPasswordTouched] = useState(false);
   const [userDetails, setUserDetails] = useState({
     email: "",
     password: "",
@@ -45,6 +47,17 @@ const LoginPage = () => {
           dispatch(setToken(data.data.token));
           navigate("/");
         }
+      } else {
+        toast.error("All fields are mandatory", {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (error) {
       console.log(error.response.data);
@@ -57,7 +70,7 @@ const LoginPage = () => {
               : data[0].msg
           }`,
           {
-            position: "top-center",
+            position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -103,20 +116,39 @@ const LoginPage = () => {
 
         <form onSubmit={loginHandler}>
           <div className="inputs flex flex-col gap-4 mt-12">
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              onChange={changeHandler}
-              value={userDetails.email}
-              className="input mb-3 text-[#fff]"
-            />
-            <EyeButton
-              placeholder="Password"
-              onChange={changeHandler}
-              value={userDetails.password}
-              name="password"
-            />
+            <div className="relative">
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={changeHandler}
+                value={userDetails.email}
+                className={`input mb-3 text-[#fff] ${
+                  userDetails.email === "" && isEmailTouched && "input-error"
+                }`}
+                // className="input mb-3 text-[#fff]"
+                onFocus={() => setIsEmailTouched(false)}
+                onBlur={() => setIsEmailTouched(true)}
+              />
+              {userDetails.email === "" && isEmailTouched && (
+                <p className="error ">
+                  Email must not be empty and must contain @!
+                </p>
+              )}
+            </div>
+            <div className="relative">
+              <EyeButton
+                placeholder="Password"
+                onChange={changeHandler}
+                value={userDetails.password}
+                name="password"
+                onFocus={() => setIsPasswordTouched(false)}
+                onBlur={() => setIsPasswordTouched(true)}
+              />
+              {userDetails.password === "" && isPasswordTouched && (
+                <p className="error ">Password field must not be empty!</p>
+              )}
+            </div>
             {/* </div> */}
             {/* <div className="pt-1.5"> */}
             <h1

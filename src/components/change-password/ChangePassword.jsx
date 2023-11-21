@@ -8,6 +8,10 @@ import { RotatingLines } from "react-loader-spinner";
 
 const ChangePassword = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isCurrentPasswordTouched, setIsCurrentPasswordTouched] =
+    useState(false);
+  const [isNewPasswordTouched, setIsNewPasswordTouched] = useState(false);
+  const [isRetypePasswordTouched, setIsRetypePasswordTouched] = useState(false);
   const navigate = useNavigate();
   const token = useSelector((state) => state.token.token);
   const [changePasswordDetails, setChangePasswordDetails] = useState({
@@ -25,26 +29,47 @@ const ChangePassword = () => {
 
   const changePasswordHandler = async () => {
     try {
-      setIsLoading(true);
-      const res = await axios.put(
-        "http://localhost:3002/user/changepassword",
-        changePasswordDetails,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+      if (
+        changePasswordDetails.currentPassword !== "" &&
+        changePasswordDetails.newPassword !== "" &&
+        changePasswordDetails.confirmPassword !== ""
+      ) {
+        setIsLoading(true);
+        const res = await axios.put(
+          "http://localhost:3002/user/changepassword",
+          changePasswordDetails,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setIsLoading(false);
+        if (res.data.status === "success") {
+          setChangePasswordDetails({
+            currentPassword: "",
+            newPassword: "",
+            confirmPassword: "",
+          });
+          toast.success(res.data.message, {
+            position: "bottom-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+
+          setTimeout(() => {
+            navigate("/create-new-quiz");
+          }, 3000);
         }
-      );
-      setIsLoading(false);
-      if (res.data.status === "success") {
-        setChangePasswordDetails({
-          currentPassword: "",
-          newPassword: "",
-          confirmPassword: "",
-        });
-        toast.success(res.data.message, {
-          position: "top-center",
+      }else{
+        toast.error('All fields are mandatory!', {
+          position: "bottom-left",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -53,10 +78,6 @@ const ChangePassword = () => {
           progress: undefined,
           theme: "light",
         });
-
-        setTimeout(() => {
-          navigate("/create-new-quiz");
-        }, 3000);
       }
     } catch (error) {
       const { data } = error.response;
@@ -67,7 +88,7 @@ const ChangePassword = () => {
             data.data.length ? data.data[0].msg : error.response.data.message
           }`,
           {
-            position: "top-center",
+            position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -102,18 +123,27 @@ const ChangePassword = () => {
           name="currentPassword"
           value={changePasswordDetails.currentPassword}
           onChange={inputHandler}
+          onFocus={() => setIsCurrentPasswordTouched(false)}
+          onBlur={() => setIsCurrentPasswordTouched(true)}
+          passwordTouched={isCurrentPasswordTouched}
         />
         <ChangePasswordInput
           placeholder="New Password"
           name="newPassword"
           value={changePasswordDetails.newPassword}
           onChange={inputHandler}
+          onFocus={() => setIsNewPasswordTouched(false)}
+          onBlur={() => setIsNewPasswordTouched(true)}
+          passwordTouched={isNewPasswordTouched}
         />
         <ChangePasswordInput
           placeholder="Re-type New Password"
           name="confirmPassword"
           value={changePasswordDetails.confirmPassword}
           onChange={inputHandler}
+          onFocus={() => setIsRetypePasswordTouched(false)}
+          onBlur={() => setIsRetypePasswordTouched(true)}
+          passwordTouched={isRetypePasswordTouched}
         />
         <div className="mt-6 relative">
           <button

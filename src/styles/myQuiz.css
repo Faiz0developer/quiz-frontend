@@ -1,0 +1,162 @@
+.search-input {
+  /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+  position: relative;
+  /* background-color: #64748B; */
+  background-color: #e2e8f0;
+  /* border: 1px solid #064E3B; */
+  /* padding: 0px 20px;; */
+  height: 54px;
+  border-radius: 30px;
+  width: 50%;
+}
+.search-input input {
+  width: 100%;
+  font-size: 20px;
+  background-color: transparent;
+  height: 100%;
+  padding: 0px 20px;
+  border-radius: 30px;
+}
+
+.search-input input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-input input:hover {
+  box-shadow: 0px 0px 4px #c084fc;
+}
+
+.search-input input:focus {
+  border: 1px solid #581c87;
+  box-shadow: 0px 0px 4px #c084fc;
+}
+.icon {
+  position: absolute;
+  right: 20px;
+  top: 14px;
+  font-size: 30px;
+}
+
+/* .dropDown {
+  width: 150px;
+  height: 34px;
+  border: 1px solid #111;
+  border-radius: 3px;
+  overflow: hidden;
+} */
+
+.dropDown {
+  position: relative;
+}
+
+.dropDown::before,
+.dropDown::after {
+  --size: 0.3rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+}
+
+.dropDown::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  /* top: 40%; */
+}
+
+.dropDown::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  /* top: 55%; */
+}
+
+.dropDown select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  font-size: 1.15rem;
+  padding: 0.675em 6em 0.5em 1em;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  /* color: #000; */
+  cursor: pointer;
+  outline: none;
+  color: #74646e;
+  box-shadow: 1px 1px 2px #999;
+}
+
+
+.dropDown select:hover {
+  box-shadow: 0px 0px 4px #c084fc;
+}
+
+.tooltip {
+  /* background: linear-gradient(225deg, rgb(209, 152, 197), rgb(149, 113, 134)); */
+  border: 1px solid #c026d3;
+}
+
+.tooltip:hover {
+  /* background: linear-gradient(225deg, rgb(231, 183, 221), rgb(180, 145, 166)); */
+  border: 1px solid #c026d3;
+  box-shadow: 0px 0px 4px #0f172a;
+}
+
+.tooltipText {
+  visibility: hidden;
+  width: 120px;
+  /* background-color: black; */
+  /* color: #fff; */
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  left: 60%;
+  transform: scale(0);
+  transition: all 0.4s ease-out;
+}
+.tooltip:hover .tooltipText {
+  visibility: visible;
+  transform: scale(1);
+}
+
+.get-icon {
+  visibility: hidden;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  left: 90%;
+  transform: translate(0);
+}
+.get-icon-1 {
+  transition: all 0.4s ease-out;
+}
+.get-icon-2 {
+    color: rgb(83, 81, 81);
+  transition: all 0.4s ease-out 0.2s;
+}
+
+.tooltip:hover .get-icon-1 {
+  visibility: visible;
+  transform: translate(20px);
+}
+.tooltip:hover .get-icon-2 {
+  visibility: visible;
+  transform: translate(14px);
+}
+
+@media screen and (max-width: 640px) {
+  .search-input {
+    width: 100%;
+  }
+  .dropDown {
+    width: 210px;
+  }
+}

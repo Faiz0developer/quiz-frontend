@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 
 const ChangeNamePage = () => {
+  const [isNameTouched, setIsNameTouched] = useState(false)
   const [isLaoding, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const token = useSelector((state) => state.token.token);
@@ -16,17 +17,33 @@ const ChangeNamePage = () => {
   });
   const changeNameHandler = async () => {
     try {
-      setIsLoading(true);
-      const res = await axios.put("http://localhost:3002/user", newName, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setIsLoading(false);
-      if (res.data.status === "success") {
-        toast.success(res.data.message, {
-          position: "top-center",
+      if (newName.name !== "") {
+        setIsLoading(true);
+        const res = await axios.put("http://localhost:3002/user", newName, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setIsLoading(false);
+        if (res.data.status === "success") {
+          toast.success(res.data.message, {
+            position: "bottom-left",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          setTimeout(() => {
+            navigate("/create-new-quiz");
+          }, 4000);
+        }
+      }else{
+        toast.error("Please a provide name!", {
+          position: "bottom-left",
           autoClose: 4000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -34,13 +51,11 @@ const ChangeNamePage = () => {
           draggable: true,
           progress: undefined,
           theme: "light",
-        });
-        setTimeout(() => {
-          navigate("/create-new-quiz");
-        }, 4000);
+        })
       }
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
   return (
@@ -52,13 +67,20 @@ const ChangeNamePage = () => {
         <h1 className="text-center text-4xl md:text-5xl my-4 py-4 h-24">
           Change your name
         </h1>
+        <div className="relative w-[75%] min-w-[470px]:w-[60%] sm:w-1/2">
         <input
           type="text"
-          className={`option-input inputFocus w-[75%] min-w-[470px]:w-[60%] sm:w-1/2`}
+          className={`option-input inputFocus w-full ${newName.name === "" && isNameTouched && "input-error"}`}
           placeholder="New Name"
           onChange={(e) => setNewName({ name: e.target.value })}
           value={newName.name}
+          onFocus={() => setIsNameTouched(false)}
+          onBlur={() => setIsNameTouched(true)}
         />
+        {newName.name === "" && isNameTouched && (
+        <p className="error mt-1 h-12">Field must not be empty!</p>
+      )}
+        </div>
 
         <div className="mt-6 relative w-[75%] min-w-[470px]:w-[60%] sm:w-1/2">
           <button
@@ -95,7 +117,7 @@ const ChangeNamePage = () => {
         <h2 className="text-center text-[#475569] mt-2">
           <span
             className="cursor-pointer hover:text-[#991B1B]"
-            // onClick={() => navigate("/create-new-quiz")}
+            onClick={() => navigate("/create-new-quiz")}
           >
             Cancel
           </span>

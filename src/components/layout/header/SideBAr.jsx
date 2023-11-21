@@ -58,7 +58,7 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
         dispatch(setToken(""));
         setTimeout(() => {
           navigate("/");
-        }, 2000);
+        }, 3000);
         console.log(res.data);
       }
     } catch (error) {

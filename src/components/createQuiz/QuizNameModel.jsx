@@ -45,7 +45,7 @@ const dispatch = useDispatch()
           value={quizDetails.quizName}
         />
       </div>
-      <div className="flex flex-col gap-1 mt-8">
+      <div className="dropDown before:top-[60%] after:top-[75%] flex flex-col gap-1 mt-8">
         <label>Category</label>
         <select name="category" id="" onChange={quizFieldsHandler} value={quizDetails.category}>
           {/* <option value="Category">Category</option> */}

@@ -16,6 +16,9 @@ import NewQuizPage from "./pages/NewQuizPage";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
 import ChangeNamePage from "./pages/ChangeNamePage";
 import LogoutModel from "./components/LogoutModel";
+import MyQuizPage from "./pages/MyQuizPage";
+import SingleQuizPage from "./pages/SingleQuizPage";
+import AllPublishedQuizzes from "./pages/AllPublishedQuizzes";
 
 function App() {
   const [isSideBarVisibe, setIsSideBarVisibe] = useState(false);
@@ -46,6 +49,9 @@ function App() {
               <Route path="/create-new-quiz" element={<NewQuizPage />} />
               <Route path="/change-password" element={<ChangePasswordPage />} />
               <Route path="/change-name" element={<ChangeNamePage />} />
+              <Route path="/my-quizzes" element={<MyQuizPage />} />
+              <Route path="/my-quizzes/:quizId" element={<SingleQuizPage />} />
+              <Route path="/all-published-quiz" element={<AllPublishedQuizzes />} />
             </Routes>
             {isSideBarVisibe && (
               <div

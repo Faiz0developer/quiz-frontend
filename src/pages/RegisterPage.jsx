@@ -10,6 +10,10 @@ import { RotatingLines } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 
 const RegisterPage = () => {
+  const [isNameTouched, setIsNameTouched] = useState(false);
+  const [isEmailTouched, setIsEmailTouched] = useState(false);
+  const [isConfirmPasswordTouched, setIsConfirmPasswordTouched] =
+    useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const [userFields, setUserFields] = useState({
@@ -78,13 +82,24 @@ const RegisterPage = () => {
           dispatch(userRegister(data));
           navigate("/verify-user");
         }
+      } else {
+        toast.error("Provide all fields", {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (error) {
       console.log(error);
       const { data } = error.response.data;
       if (error.response.data.status === "error") {
         toast.error(`${data[0].msg}`, {
-          position: "top-center",
+          position: "bottom-left",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -110,37 +125,97 @@ const RegisterPage = () => {
             CREATE ACCOUNT
           </h1>
         </div>
-        
+
         <form onSubmit={signUpHandler}>
           <div className="inputs flex flex-col gap-4 mt-8">
-            <input
-              type="text"
-              placeholder="name"
-              className="text-[#fff]"
-              onChange={inputHandler}
-              value={userFields.name}
-              name="name"
-            />
-            <input
-              type="email"
-              placeholder="email"
-              className="text-[#fff]"
-              onChange={inputHandler}
-              value={userFields.email}
-              name="email"
-            />
-            <EyeButton
-              placeholder="Password"
-              onChange={inputHandler}
-              value={userFields.password}
-              name="password"
-            />
-            <EyeButton
-              placeholder="Confirm Password"
-              onChange={inputHandler}
-              value={userFields.confirmPassword}
-              name="confirmPassword"
-            />
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="name"
+                className={`text-[#fff] ${
+                  userFields.name === "" &&
+                  userFields.name.length < 4 &&
+                  isNameTouched &&
+                  "input-error"
+                }`}
+                onChange={inputHandler}
+                value={userFields.name}
+                name="name"
+                onFocus={() => setIsNameTouched(false)}
+                onBlur={() => setIsNameTouched(true)}
+              />
+              {userFields.name === "" &&
+              userFields.name.length < 4 &&
+              isNameTouched ? (
+                <p className="error ">
+                  Name must not be empty and minimum 4 character long!
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
+
+            <div className="relative">
+              <input
+                type="email"
+                placeholder="email"
+                className={`text-[#fff] ${
+                  userFields.email === "" &&
+                  !userFields.email.includes("@") &&
+                  isEmailTouched &&
+                  "input-error"
+                }`}
+                onChange={inputHandler}
+                value={userFields.email}
+                name="email"
+                onFocus={() => setIsEmailTouched(false)}
+                onBlur={() => setIsEmailTouched(true)}
+              />
+              {userFields.email === "" &&
+                !userFields.email.includes("@") &&
+                isEmailTouched && (
+                  <p className="error ">
+                    Email must not be empty and must contain @!
+                  </p>
+                )}
+            </div>
+            <div
+              className={`relative ${
+                userFields.password === "" ||
+                userFields.password.length < 8 ||
+                (!userFields.password.includes("@") &&
+                  !userFields.password.includes("&") &&
+                  !userFields.password.includes("#") &&
+                  !userFields.password.includes("$") &&
+                  !userFields.password.includes("*"))
+                  ? "pass-validity"
+                  : ""
+              }`}
+            >
+              <EyeButton
+                placeholder="Password (8 character long)"
+                onChange={inputHandler}
+                value={userFields.password}
+                name="password"
+              />
+              {/* <p className="text-[#fff] absolute bg-[#0F172A] z-20 p-2 mt-1">Password must contain minimum 1 upppercase, 1 lowercase, 1 digit and 1 special character(#,&,*,$,@)</p> */}
+            </div>
+            <div className="relative">
+              <EyeButton
+                placeholder="Confirm Password"
+                onChange={inputHandler}
+                value={userFields.confirmPassword}
+                name="confirmPassword"
+                onFocus={() => setIsConfirmPasswordTouched(false)}
+                onBlur={() => setIsConfirmPasswordTouched(true)}
+              />
+              {userFields.confirmPassword === "" &&
+                isConfirmPasswordTouched && (
+                  <p className="error ">
+                    Confirm Password field must not be empty!
+                  </p>
+                )}
+            </div>
           </div>
           <div className="mt-8 relative">
             <button className="btn w-full text-[#fff]">Create Account</button>
