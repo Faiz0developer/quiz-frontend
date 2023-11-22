@@ -10,7 +10,6 @@ const MyQuizPage = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
   const myQuizzes = useSelector((state) => state.myQuiz.quizData);
-  console.log(myQuizzes);
 
   const singleQuizDataHandler = (quizId) => {
     navigate(`/my-quizzes/${quizId}`);
@@ -71,36 +70,38 @@ const MyQuizPage = () => {
           <>
             {quizData.map((myQuiz) => {
               return (
-                <div
-                  className="tooltip flex items-center gap-4 sm:gap-10 relative mt-2 py-4 px-4 cursor-pointer bg-[#fff] rounded "
-                  onClick={() => singleQuizDataHandler(myQuiz._id)}
-                  key={myQuiz._id}
-                >
-                  <h1
-                    className={`tooltipText ${
-                      myQuiz.isPublished ? "text-[#16A34A]" : "text-[#EF4444]"
-                    }`}
+                <div key={myQuiz._id} className="wrapper">
+                  <div
+                    className="tooltip flex items-center gap-4 sm:gap-10 relative mt-2 py-4 px-4 cursor-pointer bg-[#fff] rounded "
+                    onClick={() => singleQuizDataHandler(myQuiz._id)}
+                    
                   >
-                    {myQuiz.isPublished ? "Published" : "Not Published"}
-                  </h1>
-                  <h1 className="text-lg sm:text-xl text-[#164E63] truncate md:w-[250px]">
-                    {myQuiz.name}
-                  </h1>
-                  <div className="truncate">
-                    <p className="text-[#334155] truncate">
-                      Category: <span>{myQuiz.category}</span>
-                    </p>
-                    <p className="text-[#334155] italic truncate">
-                      Created at:{" "}
-                      <span className="text-[#334155]">{`${new Date(
-                        myQuiz.createdAt
-                      ).getDate()}-${
-                        month[new Date(myQuiz.createdAt).getMonth()]
-                      }-${new Date(myQuiz.createdAt).getFullYear()}`}</span>
-                    </p>
+                    <h1
+                      className={`tooltipText ${
+                        myQuiz.isPublished ? "text-[#16A34A]" : "text-[#EF4444]"
+                      }`}
+                    >
+                      {myQuiz.isPublished ? "Published" : "Not Published"}
+                    </h1>
+                    <h1 className="text-lg sm:text-xl text-[#164E63] truncate md:w-[250px]">
+                      {myQuiz.name}
+                    </h1>
+                    <div className="truncate">
+                      <p className="text-[#334155] truncate">
+                        Category: <span>{myQuiz.category}</span>
+                      </p>
+                      <p className="text-[#334155] italic truncate">
+                        Created at:{" "}
+                        <span className="text-[#334155]">{`${new Date(
+                          myQuiz.createdAt
+                        ).getDate()}-${
+                          month[new Date(myQuiz.createdAt).getMonth()]
+                        }-${new Date(myQuiz.createdAt).getFullYear()}`}</span>
+                      </p>
+                    </div>
+                    <MdDoubleArrow className="get-icon get-icon-1" />
+                    <MdDoubleArrow className="get-icon get-icon-2" />
                   </div>
-                  <MdDoubleArrow className="get-icon get-icon-1"/>
-                  <MdDoubleArrow className="get-icon get-icon-2"/>
                 </div>
               );
             })}

@@ -56,9 +56,9 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
       setLoggingOut(false);
       if (res.data.status === "success") {
         dispatch(setToken(""));
-        setTimeout(() => {
+        // setTimeout(() => {
           navigate("/");
-        }, 3000);
+        // }, 3000);
         console.log(res.data);
       }
     } catch (error) {
@@ -72,10 +72,10 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
         <div className="flex justify-between py-4 items-center border-b-2 border-[#fff] px-3.5">
           <div className="flex items-center">
             <div
-              className={`flex justify-center items-center h-12 w-12 rounded-full bg-[#94A3B8]`}
+              className={`flex justify-center items-center h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#94A3B8]`}
             >
               <i
-                className="fa-solid fa-user-tie text-3xl"
+                className="fa-solid fa-user-tie text-xl sm:text-3xl"
                 // style={{ color: "#ffffff" }}
               ></i>
             </div>
@@ -94,7 +94,7 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
         <div className="flex flex-col gap-3 mt-10 relative">
           <div className="px-3.5 pb-3">
             <h1 className="text-xl text-[#fff] uppercase">{user.name}</h1>
-            <h1 className="text-[#9CA3AF]">{user.email}</h1>
+            <h1 className="text-[#9CA3AF] text-sm sm:text-base">{user.email}</h1>
           </div>
           {/* <div className="flex justify-between items-center bg-[#1E293B] py-2 px-3.5">
             <div className="flex flex-col w-[75%]">

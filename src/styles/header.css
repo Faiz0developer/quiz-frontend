@@ -2,6 +2,11 @@ header{
     box-shadow: 0px 0px 10px black;
 }
 
+.header-container{
+    display: flex;
+    gap: 48px;
+    align-items: center;
+}
 .onSideBar{
     position: absolute;
     z-index: 50;
@@ -18,5 +23,163 @@ header{
     }
     100%{
         right: 0px;
+    }
+}
+
+.small-screen{
+    display: none;
+}
+
+.hook{
+    position: absolute;
+    top: 53px;
+    left: 152px;
+    font-size: 34px;
+    z-index: 50;
+    transform: rotate(-45deg);
+    transition: all 0.2s;
+    opacity: 0;
+}
+
+.hook-1{
+    position: absolute;
+    top: 53px;
+    left: 148px;
+    font-size: 34px;
+    z-index: 50;
+    transform: rotate(0deg);
+    transition: all 0.2s;
+    opacity: 1;
+}
+.hole{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 78px;
+    z-index: 30;
+    left: 158px;
+}
+
+.mobile-view{
+    position: absolute;
+    border-radius: 40px;
+    z-index: 20;
+    left: 95px;
+    top: 72px;
+    background-color: #134E4A;
+    padding: 20px;
+}
+
+.mobile-view > ul > li{
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100px;
+    box-shadow: 2px 10px 32px -8px rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 6px 0px;
+}
+.active{
+    color: #4ADE80;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.li-1{
+    top: 10px;
+    left: -90px;
+    animation: home 0.5s ;
+}
+.li-2{
+    top: 60px;
+    animation: createQuiz 0.5s;
+}
+.li-3{
+    top: 120px;
+    animation: myQuiz 0.5s 0.2s;
+}
+.li-4{
+    top: 180px;
+    animation: allQuiz 0.5s 0.4s;
+}
+.li-5{
+    top: 240px;
+    animation: report 0.5s 0.6s;
+}
+
+@keyframes home{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes createQuiz{
+    0%{
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes myQuiz{
+    0%{
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes allQuiz{
+    0%{
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes report{
+    0%{
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .header-container{
+        gap: 24px;
+    }
+    .hook-1{
+        left: 127px;
+    }
+    .hole{
+        left: 137px;
+    }
+    .mobile-view{
+        left: 70px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .small-screen{
+        display: block;
+    }
+    .big-screen{
+        display: none;
     }
 }

@@ -9,7 +9,7 @@ export const allpublishedquizSlice = createSlice({
     initialState,
     reducers:{
         getAllPublishedQuiz(state,action){
-            console.log(action.payload)
+            state.publishedQuiz = action.payload
         }
     }
 })

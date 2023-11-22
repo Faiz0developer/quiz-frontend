@@ -18,10 +18,11 @@ import ChangeNamePage from "./pages/ChangeNamePage";
 import LogoutModel from "./components/LogoutModel";
 import MyQuizPage from "./pages/MyQuizPage";
 import SingleQuizPage from "./pages/SingleQuizPage";
-import AllPublishedQuizzes from "./pages/AllPublishedQuizzes";
+import AllPublishedQuizzesPage from "./pages/AllPublishedQuizzesPage";
 
 function App() {
   const [isSideBarVisibe, setIsSideBarVisibe] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const token = useSelector((state) => state.token.token);
 
@@ -38,10 +39,12 @@ function App() {
       ) : (
         <BrowserRouter>
           <Header
+          isMobileView={isMobileView}
+          setIsMobileView={setIsMobileView}
             setIsSideBarVisibe={setIsSideBarVisibe}
             isSideBarVisibe={isSideBarVisibe}
           />
-          <main className="font-[karla] relative px-6">
+          <main className="font-[karla] relative px-6" onClick={() => setIsMobileView(false)}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/create-quiz-home" element={<CreateQuizPage />} />
@@ -51,7 +54,7 @@ function App() {
               <Route path="/change-name" element={<ChangeNamePage />} />
               <Route path="/my-quizzes" element={<MyQuizPage />} />
               <Route path="/my-quizzes/:quizId" element={<SingleQuizPage />} />
-              <Route path="/all-published-quiz" element={<AllPublishedQuizzes />} />
+              <Route path="/all-published-quiz" element={<AllPublishedQuizzesPage />} />
             </Routes>
             {isSideBarVisibe && (
               <div

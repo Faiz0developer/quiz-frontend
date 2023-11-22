@@ -23,3 +23,9 @@
         right: 0px;
     }
 }
+
+@media screen and (max-width:400px) {
+    .sidebar{
+        width: 90%;
+    }
+}
