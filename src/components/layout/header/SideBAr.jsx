@@ -94,7 +94,7 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
         <div className="flex flex-col gap-3 mt-10 relative">
           <div className="px-3.5 pb-3">
             <h1 className="text-xl text-[#fff] uppercase">{user.name}</h1>
-            <h1 className="text-[#9CA3AF] text-sm sm:text-base">{user.email}</h1>
+            <h1 className="text-[#64748B] text-sm sm:text-base">{user.email}</h1>
           </div>
           {/* <div className="flex justify-between items-center bg-[#1E293B] py-2 px-3.5">
             <div className="flex flex-col w-[75%]">
@@ -198,7 +198,7 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
             </div>
           )}
 
-          <img src={myImg} alt="" width={100} />
+          {/* <img src={myImg} alt="" width={100} /> */}
         </div>
       </div>
       {/* { loggingOut && isSideBarVisibe || <LogoutModel/> } */}

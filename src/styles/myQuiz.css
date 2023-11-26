@@ -1,19 +1,26 @@
+.my-quiz-card-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .wrapper {
   position: relative;
   perspective: 2500px;
+  width: 90%;
+  justify-self: center;
 }
 
 .tooltip {
   /* background: linear-gradient(225deg, rgb(209, 152, 197), rgb(149, 113, 134)); */
   /* border: 1px solid #c026d3; */
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to top,
     transparent 40%,
     #CBD5E1 68%,
     #E2E8F0 97%
-  );
+  ); */
+  border-radius: 20px 0px 20px 0px;
   transition: all 0.5s;
-  width: 100%;
   box-shadow: 2px 3px 32px -8px rgba(0, 0, 0, 0.75);
 }
 
@@ -226,11 +233,27 @@
 }
 
 
+@media screen and (max-width: 1000px) {
+  .my-quiz-card-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .search-input {
-    width: 100%;
+    width: 75%;
   }
   .dropDown {
     width: 210px;
   }
+}
+@media screen and (max-width: 500px) {
+  .search-input {
+    width: 90%;
+  }
+  /* .dropDown {
+    width: 210px;
+  } */
 }

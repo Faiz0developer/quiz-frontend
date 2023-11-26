@@ -10,7 +10,7 @@ const Index = () => {
   //   const navigate = useNavigate();
 
   return (
-    <div className="py-3">
+    <div className="py-3 px-6">
       <div className="flex flex-col items-center my-20">
         <img
           src="https://usagif.com/wp-content/uploads/2021/4fh5wi/welcome-19.gif"

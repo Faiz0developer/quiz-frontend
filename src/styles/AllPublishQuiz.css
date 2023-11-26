@@ -8,7 +8,7 @@
 .quiz-cards-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 20px 40px;
+  padding: 20px 0px;
   gap: 10px;
 }
 
@@ -66,11 +66,17 @@
   /* padding: 4px 14px; */
 }
 
+@media screen and (max-width:800px) {
+  .quiz-hero{
+    display: block;
+}
+  .img-container{
+    display: none;
+}  
+}
+
 @media screen and (max-width:900px) {
-    .quiz-hero{
-        display: block;
-        /* justify-content: center; */
-    }
+ 
     /* .quiz-hero>div>h1{
         text-align: center;
     }
@@ -80,9 +86,7 @@
     .quiz-hero>div>p{
         text-align: center;
     } */
-    .img-container{
-        display: none;
-    }
+
     .quiz-cards-container{
         grid-template-columns: 1fr 1fr;
     }

@@ -38,7 +38,7 @@ const ChangeNamePage = () => {
             theme: "light",
           });
           setTimeout(() => {
-            navigate("/create-new-quiz");
+            navigate("/");
           }, 4000);
         }
       }else{
@@ -117,7 +117,7 @@ const ChangeNamePage = () => {
         <h2 className="text-center text-[#475569] mt-2">
           <span
             className="cursor-pointer hover:text-[#991B1B]"
-            onClick={() => navigate("/create-new-quiz")}
+            onClick={() => navigate("/")}
           >
             Cancel
           </span>

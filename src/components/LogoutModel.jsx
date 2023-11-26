@@ -6,16 +6,16 @@ const BackDrop = (props) => {
   return <div className="backdrop" />;
 };
 
-const ModelOverlay = () => {
+const ModelOverlay = ({text}) => {
   return (
     <div className="logout-modal">
-      <h1 className="text-3xl text-[#fff]">Logging out</h1>
+      <h1 className="text-3xl text-[#fff]">{text}</h1>
       <RotatingLines />
     </div>
   );
 };
 
-const LogoutModel = () => {
+const LogoutModel = ({text}) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
@@ -23,7 +23,7 @@ const LogoutModel = () => {
         document.getElementById("backdrop_root")
       )}
       {ReactDOM.createPortal(
-        <ModelOverlay />,
+        <ModelOverlay text={text} />,
         document.getElementById("overlay_root")
       )}
     </React.Fragment>

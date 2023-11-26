@@ -64,7 +64,7 @@ const ChangePassword = () => {
           });
 
           setTimeout(() => {
-            navigate("/create-new-quiz");
+            navigate("/");
           }, 3000);
         }
       }else{
@@ -180,7 +180,7 @@ const ChangePassword = () => {
         <h2 className="text-center text-[#475569]">
           <span
             className="cursor-pointer hover:text-[#991B1B]"
-            onClick={() => navigate("/create-new-quiz")}
+            onClick={() => navigate("/")}
           >
             Cancel
           </span>

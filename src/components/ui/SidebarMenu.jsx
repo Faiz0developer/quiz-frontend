@@ -4,7 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 const SidebarMenu = ({icon ,heading, subHeading, onClickHandler }) => {
   return (
     <div
-      className="flex justify-between items-center bg-[#1E293B] py-2 px-3.5 cursor-pointer hover:bg-[#0F172A]"
+      className="sidebar-menu hover:bg-[#0F172A]"
       onClick={onClickHandler}
     >
       {icon}

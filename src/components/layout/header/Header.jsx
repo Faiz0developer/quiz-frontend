@@ -12,6 +12,8 @@ import "../../../styles/header.css";
 import { getUserData } from "../../../store/slice/userSlice";
 import { myQuizData } from "../../../store/slice/getQuizSlice";
 import { getAllPublishedQuiz } from "../../../store/slice/AllPublishedQuizSlice";
+import { IoMdHome } from "react-icons/io";
+import { AiOutlineIdcard, AiTwotoneAppstore } from "react-icons/ai";
 // import icon from '../../../assets/qa_2190535.png'
 // import SideBAr from "./SideBAr";
 
@@ -50,42 +52,42 @@ const Header = ({
 
   const getMyQuizzesHander = async (flag) => {
     setIsMobileView(false);
-    if (flag === "myQuiz") {
-      try {
-        const res = await axios.get("http://localhost:3002/quiz", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        // setQuizData(res.data.data)
-        if (res.data.status === "success") {
-          dispatch(myQuizData(res.data.data));
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    if (flag === "AllQuiz") {
-      try {
-        const res = await axios.get(
-          "http://localhost:3002/quiz/allpublishedquiz",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        if (res.data.status === "success") {
-          dispatch(getAllPublishedQuiz(res.data.data));
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
+    // if (flag === "myQuiz") {
+    //   try {
+    //     const res = await axios.get("http://localhost:3002/quiz", {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     });
+    //     // setQuizData(res.data.data)
+    //     if (res.data.status === "success") {
+    //       dispatch(myQuizData(res.data.data));
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+    // if (flag === "AllQuiz") {
+    //   try {
+    //     const res = await axios.get(
+    //       "http://localhost:3002/quiz/allpublishedquiz",
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${token}`,
+    //         },
+    //       }
+    //     );
+    //     if (res.data.status === "success") {
+    //       dispatch(getAllPublishedQuiz(res.data.data));
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
   };
 
   return (
-    <header className="relative bg-[#155E75] flex justify-between px-6 items-center">
+    <header className="relative  flex justify-between px-6 items-center">
       <div className="header-container ">
         <video
           src={myImg}
@@ -107,9 +109,7 @@ const Header = ({
                 <li className="li-1" onClick={() => getMyQuizzesHander("home")}>
                   <NavLink
                     to="/"
-                    className={({ isActive }) =>
-                      isActive ? "active" : ""
-                    }
+                    className={({ isActive }) => (isActive ? "active" : "")}
                   >
                     Home
                   </NavLink>{" "}
@@ -145,30 +145,57 @@ const Header = ({
       </div>
 
       <div className="big-screen">
-        <ul className="flex items-center text-[#fff] gap-6 ">
-          <li className="border-b-2 py-2">
-            <i className="fa-solid fa-house mr-1"></i>
-            <Link to="/">Home</Link>{" "}
-          </li>
-          <li className="flex gap-1 justify-center py-2">
-            <MdQuiz className="mt-0.5 text-xl" />
-            <Link to="/create-quiz-home">Create Quiz</Link>{" "}
-          </li>
-
-          <li
-            className="flex gap-1 justify-center items-center py-2 cursor-pointer"
-            onClick={() => getMyQuizzesHander("myQuiz")}
-          >
-            <GiCardQueenDiamonds />
-            <Link to="/my-quizzes">My Quizzes</Link>{" "}
-          </li>
-          <li onClick={() => getMyQuizzesHander("AllQuiz")}>
-            <i className="fa-brands fa-readme mr-1"></i>
-            <Link to="/all-published-quiz">All Quizzes</Link>{" "}
+        <ul className="flex items-center text-[#0F172A] gap-3 ">
+          <li>
+            {/* <i className="fa-solid fa-house mr-1"></i> */}
+            {/* <IoMdHome className="text-xl" /> */}
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active-1" : "")}
+            >
+              <IoMdHome className="text-xl" /> Home
+            </NavLink>{" "}
           </li>
           <li>
-            <i className="fa-brands fa-readme mr-1"></i>
-            <Link to="/report">Report</Link>{" "}
+            {/* <MdQuiz className="text-xl" /> */}
+            <NavLink
+              to="/create-quiz-home"
+              className={({ isActive }) => (isActive ? "active-1" : "")}
+            >
+              <MdQuiz className="text-xl" /> Create Quiz
+            </NavLink>{" "}
+          </li>
+          <li
+            // className="flex gap-1 justify-center items-center py-2 cursor-pointer"
+            onClick={() => getMyQuizzesHander("myQuiz")}
+          >
+            {/* <GiCardQueenDiamonds className="text-xl" /> */}
+            <NavLink
+              to="/my-quizzes"
+              className={({ isActive }) => (isActive ? "active-1" : "")}
+            >
+              <GiCardQueenDiamonds className="text-xl" /> My Quizzes
+            </NavLink>{" "}
+          </li>
+          <li onClick={() => getMyQuizzesHander("AllQuiz")}>
+            {/* <i className="fa-brands fa-readme mr-1"></i> */}
+            {/* <AiTwotoneAppstore className="text-xl" /> */}
+            <NavLink
+              to="/all-published-quiz"
+              className={({ isActive }) => (isActive ? "active-1" : "")}
+            >
+              <AiTwotoneAppstore className="text-xl" /> All Quizzes
+            </NavLink>{" "}
+          </li>
+          <li>
+            {/* <i className="fa-brands fa-readme mr-1"></i> */}
+            {/* <AiOutlineIdcard className="text-xl" /> */}
+            <NavLink
+              to="/report"
+              className={({ isActive }) => (isActive ? "active-1" : "")}
+            >
+              <AiOutlineIdcard className="text-xl" /> Report
+            </NavLink>{" "}
           </li>
         </ul>
       </div>

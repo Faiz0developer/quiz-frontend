@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { RotatingLines } from "react-loader-spinner";
+import { LineWave, RotatingLines, ThreeDots } from "react-loader-spinner";
 
 import "../styles/login.css";
 import EyeButton from "../ui/EyeButton";
@@ -172,17 +172,38 @@ const LoginPage = () => {
               Login
             </button>
             {isLoading ? (
-              <div className="loader">
-                <RotatingLines
-                  strokeColor="grey"
-                  // strokeColor="#064E3B"
+            <div className="loader">
+              {/* <ThreeDots
+                height="80"
+                width="80"
+                radius="9"
+                color="#4fa94d"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}
+              /> */}
+              {/* <LineWave
+                  height="100"
+                  width="200"
+                  color="#4fa94d"
+                  ariaLabel="line-wave"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  firstLineColor=""
+                  middleLineColor=""
+                  lastLineColor=""
+                /> */}
+              <RotatingLines
+                  strokeColor="#064E3B"
                   strokeWidth="5"
                   animationDuration="0.75"
                   width="30"
                   visible={true}
                 />
-              </div>
-            ) : (
+            </div>
+             ) : (
               ""
             )}
             <ToastContainer

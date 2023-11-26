@@ -3,16 +3,36 @@
     top: -80px;
     right: 0px;
     z-index: 20;
-    box-shadow: 0px 0px 10px black;
+    /* box-shadow: 0px 0px 10px black; */
+    box-shadow: 2px 3px 52px -8px rgba(0, 0, 0, 0.75);
+    /* background-color: #BBF7D0; */
+    /* background-color: rgba(255, 255, 255, 0.4); */
     height: 100vh;
     /* background-color: #E2E8F0; */
-    background-color: #64748B;
+    /* background-color: #64748B; */
     /* background-color: #0891B2; */
     width: 350px;
     /* transition: all 2s ease-out; */
     border-radius: 10px 0px 0px 10px;
     animation: slider 500ms ease-out;
     /* padding: 0px 15px; */
+    -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.sidebar-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    cursor: pointer;
+    background-color: #0F172A;
+    /* box-shadow: 2px 3px 52px -8px rgba(0, 0, 0, 0.75); */
+}
+
+.sidebar-menu:hover{
+    background-color: #1E293B;
+    /* box-shadow: 2px 3px 52px -8px rgba(0, 0, 0, 0.75); */
 }
 
 @keyframes slider{

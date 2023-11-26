@@ -128,8 +128,8 @@ const ActivateAccountPage = () => {
           {isActivating ? (
             <div className="loader">
               <RotatingLines
-                strokeColor="grey"
-                // strokeColor="#064E3B"
+                // strokeColor="grey"
+                strokeColor="#064E3B"
                 strokeWidth="5"
                 animationDuration="0.75"
                 width="30"

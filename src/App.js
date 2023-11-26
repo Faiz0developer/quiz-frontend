@@ -24,6 +24,7 @@ function App() {
   const [isSideBarVisibe, setIsSideBarVisibe] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
+  const [publishing, setPublishing] = useState(false);
   const token = useSelector((state) => state.token.token);
 
   if (isSideBarVisibe) {
@@ -38,23 +39,33 @@ function App() {
         <RegisterLogin />
       ) : (
         <BrowserRouter>
+        <div className="bg-[#FEF9C3]">
           <Header
-          isMobileView={isMobileView}
-          setIsMobileView={setIsMobileView}
+            isMobileView={isMobileView}
+            setIsMobileView={setIsMobileView}
             setIsSideBarVisibe={setIsSideBarVisibe}
             isSideBarVisibe={isSideBarVisibe}
           />
-          <main className="font-[karla] relative px-6" onClick={() => setIsMobileView(false)}>
+          <main
+            className="font-[karla] relative"
+            onClick={() => setIsMobileView(false)}
+          >
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/create-quiz-home" element={<CreateQuizPage />} />
-              <Route path="/report" element={<ReportPage />} />
               <Route path="/create-new-quiz" element={<NewQuizPage />} />
+              <Route path="/report" element={<ReportPage />} />
               <Route path="/change-password" element={<ChangePasswordPage />} />
               <Route path="/change-name" element={<ChangeNamePage />} />
               <Route path="/my-quizzes" element={<MyQuizPage />} />
-              <Route path="/my-quizzes/:quizId" element={<SingleQuizPage />} />
-              <Route path="/all-published-quiz" element={<AllPublishedQuizzesPage />} />
+              <Route
+                path="/my-quizzes/:quizId"
+                element={<SingleQuizPage setPublishing={setPublishing} publishing={publishing} />}
+              />
+              <Route
+                path="/all-published-quiz"
+                element={<AllPublishedQuizzesPage />}
+              />
             </Routes>
             {isSideBarVisibe && (
               <div
@@ -63,11 +74,17 @@ function App() {
               />
             )}
             {isSideBarVisibe && (
-              <SideBAr setIsSideBarVisibe={setIsSideBarVisibe} isSideBarVisibe={isSideBarVisibe} setLoggingOut={setLoggingOut} />
+              <SideBAr
+                setIsSideBarVisibe={setIsSideBarVisibe}
+                isSideBarVisibe={isSideBarVisibe}
+                setLoggingOut={setLoggingOut}
+              />
             )}
-            {loggingOut && <LogoutModel/>}
+            {loggingOut && <LogoutModel text="Logging out" />}
+            {publishing && <LogoutModel text="" />}
           </main>
           <Footer />
+          </div>
         </BrowserRouter>
       )}
     </>

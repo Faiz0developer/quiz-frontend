@@ -130,7 +130,7 @@ const CreateQuiz = () => {
   };
 
   return (
-    <div className="py-3">
+    <div className="py-3 px-6">
       <div className="flex flex-col items-center my-12 p-4">
         {/* <img src="https://i.gifer.com/P54U.gif" alt="" width={200} /> */}
         <div className="flex justify-between w-11/12 p-4 border-b-2">
