@@ -1,13 +1,18 @@
 .quiz-hero{
     display: flex;
-    justify-content: space-around;
-    padding: 0px 40px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+    /* padding: 0px 40px; */
     padding-bottom: 40px;
+    background: url('https://media.istockphoto.com/id/1395434382/photo/aerial-view-of-water-and-sand-patterns.jpg?s=2048x2048&w=is&k=20&c=UapSvLJURkL1DWUlFFfLaINdpe-plu8R32-txcQbne8=');
 }
 
 .quiz-cards-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 20px 0px;
   gap: 10px;
 }
@@ -66,14 +71,14 @@
   /* padding: 4px 14px; */
 }
 
-@media screen and (max-width:800px) {
+/* @media screen and (max-width:800px) {
   .quiz-hero{
     display: block;
 }
   .img-container{
     display: none;
 }  
-}
+} */
 
 @media screen and (max-width:900px) {
  

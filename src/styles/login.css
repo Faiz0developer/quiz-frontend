@@ -24,15 +24,16 @@
 .inputs input:focus {
   outline: none;
   /* border: 1px solid #E11D48; */
-  box-shadow: 0px 0px 6px #0F172A;
-  background-color: #155E75;
+  box-shadow: 0px 0px 6px #0f172a;
+  background-color: #155e75;
 }
 /* .input{
     border: 1px black solid;
 } */
 
 .btn {
-  background-color: #FDBA74;
+  background-color: #fdba74;
+  text-shadow: 0px 2px 10px rgba(46, 74, 81, 0.3);
   /* background-color: #0284C7; */
   /* width: 100%; */
   padding-top: 10px;
@@ -42,7 +43,8 @@
   border-radius: 6px;
   /* letter-spacing: 1px; */
   font-size: 20px;
-  font-weight: 300;
+  /* font-weight: 300; */
+  font-weight: 500;
   /* box-shadow: 2px 2px 10px #0F172A; */
 
   /* background: linear-gradient(
@@ -55,18 +57,20 @@
     #22d3ee
   ); */
   transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 .btn:hover {
-  box-shadow: 2px 2px 10px #FDBA74;
+  box-shadow: 2px 2px 10px #fdba74;
   /* background-color: transparent;
   border: 1px solid #fff; */
-  color: #0F172A;
+  color: #0f172a;
 }
 .btn:active {
   transform: scale(0.97);
 }
 
-.loader{
+.loader {
   position: absolute;
   top: 10px;
   right: 90px;
@@ -85,29 +89,29 @@
   animation: bordercolor 1s ease-in-out;
 } */
 
-.pass-validity::before{
+.pass-validity::before {
   content: "Password must contain minimum 1 upppercase, 1 lowercase, 1 digit and 1 special character (#,&,*,$,@)";
   bottom: -86px;
   position: absolute;
-  background-color: #0F172A;
+  background-color: #0f172a;
   padding: 6px;
   color: #fff;
   z-index: 20;
-  visibility:hidden;
+  visibility: hidden;
   transform: scaleY(0);
   transition: all 0.4s ease-out;
 }
-.pass-validity:hover:before{
+.pass-validity:hover:before {
   visibility: visible;
   transform: scale(1);
 }
 
-.input-error{
+.input-error {
   border: 1px solid #c90606;
   background-color: #c90606;
 }
 
-.error{
+.error {
   position: absolute;
   background-color: #fff;
   color: #c90606;
@@ -119,11 +123,11 @@
   animation: errorAnimation 0.4s ease-out;
 }
 
-@keyframes errorAnimation{
-  0%{
+@keyframes errorAnimation {
+  0% {
     transform: scale(0);
   }
-  100%{
+  100% {
     transform: scale(1);
   }
 }
@@ -142,3 +146,84 @@
     border: 1px solid #10B981;
   }
 } */
+
+/* .loading-container {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+.loading-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+  animation: movingLine 2.4s infinite ease-in-out;
+}
+@keyframes movingLine {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  33.3%,
+  66% {
+    opacity: 0.8;
+    width: 100%;
+  }
+
+  85% {
+    width: 0;
+    left: initial;
+    right: 0;
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+} */
+.loading-text {
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 3px;
+  /* margin-bottom: 32px; */
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #fdba74;
+  border-radius: 6px;
+}
+.loading-text > span {
+  animation: moveLetters 2.4s infinite ease-in-out;
+  transform: translatex(0);
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  text-shadow: 0px 2px 10px rgba(46, 74, 81, 0.3);
+}
+
+@keyframes moveLetters {
+  0% {
+    transform: translateX(-10vw);
+    opacity: 0;
+  }
+  
+  33.3%, 66% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  100% {
+    transform: translateX(10vw);
+    opacity: 0;
+  }
+}

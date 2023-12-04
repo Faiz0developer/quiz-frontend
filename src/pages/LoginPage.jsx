@@ -5,7 +5,7 @@ import { LineWave, RotatingLines, ThreeDots } from "react-loader-spinner";
 
 import "../styles/login.css";
 import EyeButton from "../ui/EyeButton";
-import myImg from "../assets/quiz4.mp4";
+import myImg from "../assets/Quizzle__6_-removebg-preview.png";
 import axios from "axios";
 import { setToken } from "../store/slice/tokenSlice";
 import { ToastContainer, toast } from "react-toastify";
@@ -96,8 +96,9 @@ const LoginPage = () => {
   return (
     <div className="bg-[#155E75] flex justify-center items-center h-[100vh]">
       <div className="content w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[30%] p-4 rounded-md">
-        <div className="flex justify-center mb-10">
-          <video src={myImg} width="150" autoPlay muted />
+        <div className="flex justify-center">
+          {/* <video src={myImg} width="150" autoPlay muted /> */}
+          <img src={myImg} alt="" width={200} />
         </div>
 
         {/* <div className="mb-10">
@@ -164,47 +165,29 @@ const LoginPage = () => {
             </h1>
           </div>
           <div className="mt-6 relative">
-            <button
-              className={`btn w-full text-[#fff] ${
-                isLoading ? "border-color" : ""
-              }`}
-            >
-              Login
-            </button>
             {isLoading ? (
-            <div className="loader">
-              {/* <ThreeDots
-                height="80"
-                width="80"
-                radius="9"
-                color="#4fa94d"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={true}
-              /> */}
-              {/* <LineWave
-                  height="100"
-                  width="200"
-                  color="#4fa94d"
-                  ariaLabel="line-wave"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                  firstLineColor=""
-                  middleLineColor=""
-                  lastLineColor=""
-                /> */}
-              <RotatingLines
-                  strokeColor="#064E3B"
-                  strokeWidth="5"
-                  animationDuration="0.75"
-                  width="30"
-                  visible={true}
-                />
-            </div>
-             ) : (
-              ""
+              <div class="loading-container">
+                <div class="loading-text">
+                  <span>L</span>
+                  <span>O</span>
+                  <span>A</span>
+                  <span>D</span>
+                  <span>I</span>
+                  <span>N</span>
+                  <span>G</span>
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                </div>
+              </div>
+            ) : (
+              <button
+                className={`btn w-full text-[#fff] ${
+                  isLoading ? "border-color" : ""
+                }`}
+              >
+                Login
+              </button>
             )}
             <ToastContainer
               position="top-center"

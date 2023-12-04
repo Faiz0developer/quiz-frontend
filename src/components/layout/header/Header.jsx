@@ -7,7 +7,7 @@ import axios from "axios";
 import { GiCardQueenDiamonds, GiHook } from "react-icons/gi";
 import { TfiAlignJustify } from "react-icons/tfi";
 
-import myImg from "../../../assets/quiz4.mp4";
+import myImg from "../../../assets/Q-removebg-preview.png";
 import "../../../styles/header.css";
 import { getUserData } from "../../../store/slice/userSlice";
 import { myQuizData } from "../../../store/slice/getQuizSlice";
@@ -89,22 +89,23 @@ const Header = ({
   return (
     <header className="relative  flex justify-between px-6 items-center">
       <div className="header-container ">
-        <video
+        <img src={myImg} alt="" width={100}/>
+        {/* <video
           src={myImg}
           width="80"
           // height="150"
           autoPlay
           muted
-        />
+        /> */}
         <div className="small-screen">
           <TfiAlignJustify
             className="text-3xl cursor-pointer"
             onClick={() => setIsMobileView(!isMobileView)}
           />
           <GiHook className={`${isMobileView ? "hook-1" : "hook"}`} />
-          {isMobileView && <div className="hole"></div>}
           {isMobileView && (
             <div className="mobile-view">
+              {isMobileView && <div className="hole"></div>}
               <ul className="relative flex flex-col items-center text-[#fff] gap-6 mt-3">
                 <li className="li-1" onClick={() => getMyQuizzesHander("home")}>
                   <NavLink
@@ -184,7 +185,7 @@ const Header = ({
               to="/all-published-quiz"
               className={({ isActive }) => (isActive ? "active-1" : "")}
             >
-              <AiTwotoneAppstore className="text-xl" /> All Quizzes
+              <AiTwotoneAppstore className="text-xl" /> Take the quiz
             </NavLink>{" "}
           </li>
           <li>

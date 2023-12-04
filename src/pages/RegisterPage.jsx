@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import EyeButton from "../ui/EyeButton";
-import myImg from "../assets/quiz4.mp4";
+import myImg from "../assets/Quizzle__6_-removebg-preview.png";
 import { useDispatch } from "react-redux";
 import { userRegister } from "../store/slice/registerSlice";
 import { RotatingLines } from "react-loader-spinner";
@@ -117,7 +117,8 @@ const RegisterPage = () => {
     <div className="bg-[#155E75] flex justify-center  items-center h-[100vh]">
       <div className=" w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[30%] p-4 rounded-md">
         <div className="flex flex-col items-center">
-          <video src={myImg} width="150" autoPlay muted />
+          <img src={myImg} alt="" width={200} />
+          {/* <video src={myImg} width="150" autoPlay muted /> */}
         </div>
 
         <div className="mb-10">

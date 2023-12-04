@@ -39,51 +39,59 @@ function App() {
         <RegisterLogin />
       ) : (
         <BrowserRouter>
-        <div className="bg-[#FEF9C3]">
-          <Header
-            isMobileView={isMobileView}
-            setIsMobileView={setIsMobileView}
-            setIsSideBarVisibe={setIsSideBarVisibe}
-            isSideBarVisibe={isSideBarVisibe}
-          />
-          <main
-            className="font-[karla] relative"
-            onClick={() => setIsMobileView(false)}
-          >
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/create-quiz-home" element={<CreateQuizPage />} />
-              <Route path="/create-new-quiz" element={<NewQuizPage />} />
-              <Route path="/report" element={<ReportPage />} />
-              <Route path="/change-password" element={<ChangePasswordPage />} />
-              <Route path="/change-name" element={<ChangeNamePage />} />
-              <Route path="/my-quizzes" element={<MyQuizPage />} />
-              <Route
-                path="/my-quizzes/:quizId"
-                element={<SingleQuizPage setPublishing={setPublishing} publishing={publishing} />}
-              />
-              <Route
-                path="/all-published-quiz"
-                element={<AllPublishedQuizzesPage />}
-              />
-            </Routes>
-            {isSideBarVisibe && (
-              <div
-                className="fixed top-0 left-0 w-full h-[100vh] z-10 bg-[#00000033]"
-                onClick={() => setIsSideBarVisibe(false)}
-              />
-            )}
-            {isSideBarVisibe && (
-              <SideBAr
-                setIsSideBarVisibe={setIsSideBarVisibe}
-                isSideBarVisibe={isSideBarVisibe}
-                setLoggingOut={setLoggingOut}
-              />
-            )}
-            {loggingOut && <LogoutModel text="Logging out" />}
-            {publishing && <LogoutModel text="" />}
-          </main>
-          <Footer />
+          <div className="bg-[#FEF9C3]">
+            <Header
+              isMobileView={isMobileView}
+              setIsMobileView={setIsMobileView}
+              setIsSideBarVisibe={setIsSideBarVisibe}
+              isSideBarVisibe={isSideBarVisibe}
+            />
+            <main
+              className="font-[karla] relative"
+              onClick={() => setIsMobileView(false)}
+            >
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/create-quiz-home" element={<CreateQuizPage />} />
+                <Route path="/create-new-quiz" element={<NewQuizPage />} />
+                <Route path="/report" element={<ReportPage />} />
+                <Route
+                  path="/change-password"
+                  element={<ChangePasswordPage />}
+                />
+                <Route path="/change-name" element={<ChangeNamePage />} />
+                <Route path="/my-quizzes" element={<MyQuizPage />} />
+                <Route
+                  path="/my-quizzes/:quizId"
+                  element={
+                    <SingleQuizPage
+                      setPublishing={setPublishing}
+                      publishing={publishing}
+                    />
+                  }
+                />
+                <Route
+                  path="/all-published-quiz"
+                  element={<AllPublishedQuizzesPage />}
+                />
+              </Routes>
+              {isSideBarVisibe && (
+                <div
+                  className="fixed top-0 left-0 w-full h-[100vh] z-10 bg-[#00000033]"
+                  onClick={() => setIsSideBarVisibe(false)}
+                />
+              )}
+              {isSideBarVisibe && (
+                <SideBAr
+                  setIsSideBarVisibe={setIsSideBarVisibe}
+                  isSideBarVisibe={isSideBarVisibe}
+                  setLoggingOut={setLoggingOut}
+                />
+              )}
+              {loggingOut && <LogoutModel text="Logging out" />}
+              {publishing && <LogoutModel text="" />}
+            </main>
+            <Footer />
           </div>
         </BrowserRouter>
       )}

@@ -1,6 +1,6 @@
-header {
+/* header {
   box-shadow: 0px 0px 10px black;
-}
+} */
 
 .header-container {
   display: flex;
@@ -33,9 +33,10 @@ header {
 .hook {
   position: absolute;
   top: 53px;
-  left: 152px;
+  left: 168px;
   font-size: 34px;
   z-index: 50;
+  transform-origin: 50% 0;
   transform: rotate(-45deg);
   transition: all 0.2s;
   opacity: 0;
@@ -43,11 +44,13 @@ header {
 
 .hook-1 {
   position: absolute;
-  top: 53px;
-  left: 148px;
+  top: 57px;
+  left: 168px;
   font-size: 34px;
   z-index: 50;
-  transform: rotate(0deg);
+  transform-origin: 50% 0;
+  animation: holeMoveIt 2.5s ease-in-out 1;
+  /* transform: rotate(0deg); */
   transition: all 0.2s;
   opacity: 1;
 }
@@ -57,16 +60,18 @@ header {
   height: 12px;
   background-color: #fff;
   border-radius: 50%;
-  top: 78px;
+  top: 8px;
   z-index: 30;
-  left: 158px;
+  left: 68px;
+  /* transform-origin: 50% 0;
+  animation: holeMoveIt 1.5s ease-in-out 1; */
 }
 
 .mobile-view {
   position: absolute;
   border-radius: 40px;
   z-index: 20;
-  left: 95px;
+  left: 113px;
   top: 72px;
   background-color: #134e4a;
   padding: 20px;
@@ -74,12 +79,23 @@ header {
   animation: moveIt 2.5s ease-in-out 1;
 }
 
-@keyframes moveIt {
+@keyframes holeMoveIt {
     0%{
       transform: rotate(45deg);
     }
     50% {
       transform: rotate(-45deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+  }
+@keyframes moveIt {
+    0%{
+      transform: rotate(45deg);
+    }
+    50% {
+      transform: rotate(-45deg) translateY(10px);
     }
     100%{
         transform: rotate(0deg);
@@ -251,14 +267,17 @@ header {
   .header-container {
     gap: 24px;
   }
+  .hook{
+    left: 145px;
+  }
   .hook-1 {
-    left: 127px;
+    left: 145px;
   }
   .hole {
-    left: 137px;
+    left: 70px;
   }
   .mobile-view {
-    left: 70px;
+    left: 85px;
   }
 }
 

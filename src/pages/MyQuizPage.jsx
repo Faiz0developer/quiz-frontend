@@ -82,16 +82,15 @@ const MyQuizPage = () => {
     <div className="px-2 py-4">
       {isLoading ? (
         <div className="flex justify-center items-center h-[70vh]">
-          <Puff
-            height="80"
-            width="80"
-            radius={1}
-            color="#4fa94d"
-            ariaLabel="puff-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
+          <div class="my-quiz-loader-wrapper">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <span>Loading</span>
+          </div>
         </div>
       ) : (
         <>
@@ -101,13 +100,12 @@ const MyQuizPage = () => {
                 <input
                   type="search"
                   className="bg-[#64748B] h-full focus:outline-none"
-                  placeholder="Search"
+                  placeholder="Search (small letter)"
                   onChange={searchInputHandler}
                   value={searchInput}
                 />
                 <CiSearch className="icon" />
-              </div>
-              <div className="dropDown before:top-[40%] after:top-[55%]">
+                <div className="drop-down">
                 <select name="" id="" onChange={searchInputHandler}>
                   <option value="all">All</option>
                   <option value="exam" className="p-2">
@@ -115,7 +113,17 @@ const MyQuizPage = () => {
                   </option>
                   <option value="test">Test</option>
                 </select>
+                </div>
               </div>
+              {/* <div className="dropDown before:top-[40%] after:top-[55%]">
+                <select name="" id="" onChange={searchInputHandler}>
+                  <option value="all">All</option>
+                  <option value="exam" className="p-2">
+                    Exam
+                  </option>
+                  <option value="test">Test</option>
+                </select>
+              </div> */}
             </div>
           </div>
           <div className="my-quiz-card-container px-4 my-12 pt-2">
@@ -137,16 +145,16 @@ const MyQuizPage = () => {
                         >
                           {myQuiz.isPublished ? "Published" : "Not Published"}
                         </h1>
-                        <h1 className="text-lg sm:text-xl text-[#164E63] truncate">
+                        <h1 className="text-lg sm:text-xl text-[#9c4a45] truncate font-semibold">
                           {myQuiz.name}
                         </h1>
-                        <div className="truncate">
-                          <p className="text-[#334155] truncate">
+                        <div className="truncate text-[#9c4a45]">
+                          <p className=" truncate">
                             Category: <span>{myQuiz.category}</span>
                           </p>
-                          <p className="text-[#334155] italic truncate">
+                          <p className=" italic truncate">
                             Created at:{" "}
-                            <span className="text-[#334155]">{`${new Date(
+                            <span className="">{`${new Date(
                               myQuiz.createdAt
                             ).getDate()}-${
                               month[new Date(myQuiz.createdAt).getMonth()]

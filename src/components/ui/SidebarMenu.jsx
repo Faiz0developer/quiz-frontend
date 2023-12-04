@@ -9,10 +9,10 @@ const SidebarMenu = ({icon ,heading, subHeading, onClickHandler }) => {
     >
       {icon}
       <div className="flex flex-col w-[75%]">
-        <h1 className="text-[#fff]">{heading}</h1>
-        <span className="text-[#94A3B8] text-sm">{subHeading}</span>
+        <h1 className="text-[#0F172A]">{heading}</h1>
+        <span className="text-[#334155] text-sm">{subHeading}</span>
       </div>
-      <IoIosArrowForward className="text-[#94A3B8]" />
+      <IoIosArrowForward className="text-[#334155]" />
     </div>
   );
 };

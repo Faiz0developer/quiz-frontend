@@ -11,7 +11,7 @@ import {
 } from "react-icons/md";
 
 import "../../../styles/sidebar.css";
-import myImg from "../../../assets/quizLogo.png";
+import myImg from "../../../assets/Q-removebg-preview.png";
 import SidebarMenu from "../../ui/SidebarMenu";
 import { setToken } from "../../../store/slice/tokenSlice";
 import LogoutModel from "../../LogoutModel";
@@ -69,7 +69,7 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
   return (
     <div className="sidebar">
       <div>
-        <div className="flex justify-between py-4 items-center border-b-2 border-[#fff] px-3.5">
+        <div className="flex justify-between py-4 items-center border-b-2 border-[#e1e4e7] px-3.5">
           <div className="flex items-center">
             <div
               className={`flex justify-center items-center h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#94A3B8]`}
@@ -93,7 +93,7 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
         </div>
         <div className="flex flex-col gap-3 mt-10 relative">
           <div className="px-3.5 pb-3">
-            <h1 className="text-xl text-[#fff] uppercase">{user.name}</h1>
+            <h1 className="text-xl text-[#493143] uppercase">{user.name}</h1>
             <h1 className="text-[#64748B] text-sm sm:text-base">{user.email}</h1>
           </div>
           {/* <div className="flex justify-between items-center bg-[#1E293B] py-2 px-3.5">
@@ -126,30 +126,30 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
           </div> */}
           {/* () => navigate('/change-name') */}
           <SidebarMenu
-            icon=<MdOutlineSettings className="text-[#fff]" />
+            icon=<MdOutlineSettings className="text-[#0F172A]" />
             heading="Change Name"
             subHeading="Manage your name"
             onClickHandler={() => clickHandler("name")}
           />
           <SidebarMenu
-            icon=<MdKey className="text-[#fff]" />
+            icon=<MdKey className="text-[#0F172A]" />
             heading="Change Password"
             subHeading="Manage your password"
             onClickHandler={() => clickHandler("password")}
           />
           <SidebarMenu
-            icon=<MdOutlineFavorite className="text-[#fff]" />
+            icon=<MdOutlineFavorite className="text-[#0F172A]" />
             heading="Favourite"
             subHeading="Favorite Questions"
           />
           <SidebarMenu
-            icon=<MdOutlineDoNotDisturbOn className="text-[#fff]" />
+            icon=<MdOutlineDoNotDisturbOn className="text-[#0F172A]" />
             heading="Deactivate Account"
             subHeading="Deactivate your account"
             onClickHandler={() => clickHandler("deactivate")}
           />
           {onDeactivate && (
-            <div className="absolute ml-2 flex flex-col items-center bottom-[-130px] z-50 w-[95%] bg-[#fff] rounded-md p-4">
+            <div className="absolute ml-2 flex flex-col items-center bottom-[-130px] z-50 w-[95%] bg-[#e1e4e7] rounded-md p-4">
               <h1 className="text-xl">Are you sure?</h1>
               <div className="w-full">
                 <p
@@ -168,9 +168,9 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col relative items-center gap-2 py-10 z-20">
+        <div className="flex flex-col relative items-center py-10 z-20">
           {onLogout ? (
-            <div className="absolute flex flex-col items-center w-[95%] bg-[#fff] rounded-md p-4">
+            <div className="absolute flex flex-col items-center w-[95%] bg-[#e1e4e7] rounded-md p-4">
               <h1 className="text-xl">Are you sure?</h1>
               <div className="w-full">
                 <p
@@ -198,7 +198,7 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
             </div>
           )}
 
-          {/* <img src={myImg} alt="" width={100} /> */}
+          <img src={myImg} alt="" width={100}/>
         </div>
       </div>
       {/* { loggingOut && isSideBarVisibe || <LogoutModel/> } */}
