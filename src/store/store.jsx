@@ -5,6 +5,7 @@ import registerReducer from "./slice/registerSlice";
 import userReducer from "./slice/userSlice";
 import myQuizReducer from "./slice/getQuizSlice";
 import allpublishedquizReducer from "./slice/AllPublishedQuizSlice";
+import StartQuizReducer from "./slice/StartExamSlice";
 
 export const store = configureStore({
     reducer:{
@@ -13,6 +14,7 @@ export const store = configureStore({
         register:registerReducer,
         user:userReducer,
         myQuiz:myQuizReducer,
-        allPublishedQuiz:allpublishedquizReducer
+        allPublishedQuiz:allpublishedquizReducer,
+        StartQuiz:StartQuizReducer
     }
 })

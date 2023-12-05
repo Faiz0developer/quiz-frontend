@@ -19,6 +19,7 @@ import LogoutModel from "./components/LogoutModel";
 import MyQuizPage from "./pages/MyQuizPage";
 import SingleQuizPage from "./pages/SingleQuizPage";
 import AllPublishedQuizzesPage from "./pages/AllPublishedQuizzesPage";
+import StartExamPage from "./pages/StartExamPage";
 
 function App() {
   const [isSideBarVisibe, setIsSideBarVisibe] = useState(false);
@@ -74,6 +75,7 @@ function App() {
                   path="/all-published-quiz"
                   element={<AllPublishedQuizzesPage />}
                 />
+                <Route path="/start-exam" element={<StartExamPage />} />
               </Routes>
               {isSideBarVisibe && (
                 <div

@@ -45,7 +45,7 @@ const ReportPage = () => {
 
   return (
     <div className="px-10 py-16">
-      <div className="upper-text pt-6 pb-4 px-0 sm:px-24 text-[#9c4a45]">
+      {/* <div className="upper-text pt-6 pb-4 px-0 sm:px-24 text-[#9c4a45]">
         <h1 className=" text-3xl min-[400px]:text-5xl sm:text-[64px] tracking-[8px] min-[400px]:tracking-[14px] font-extrabold relative text-center ">
           KNOW
           <span> YOUR</span>
@@ -54,9 +54,9 @@ const ReportPage = () => {
         <h1 className="text-3xl min-[400px]:text-5xl sm:text-[64px] tracking-[8px] min-[400px]:tracking-[14px] font-extrabold relative text-center ">
           REPORTS
         </h1>
-      </div>
+      </div> */}
 
-      <div className="pt-20">
+      <div className="">
         <h1 className="text-center text-xl min-[400px]:text-3xl md:text-4xl text-[#164E63] pt-4 pb-6 font-[serif]">
           Quiz Reports
         </h1>

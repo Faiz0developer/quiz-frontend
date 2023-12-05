@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPublishedQuiz } from "../../store/slice/AllPublishedQuizSlice";
 import { FallingLines } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
+import { startQuiz } from "../../store/slice/StartExamSlice";
 
 const QuizCard = ({ setSearchInput, searchInput }) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token.token);
   const [isLoading, setIsLoading] = useState(false);
   const [allPublishedQuiz, setAllPublishedQuiz] = useState();
+  const navigate = useNavigate()
 
   console.log(searchInput);
   // const allPublishedQuiz = useSelector(
@@ -54,6 +57,23 @@ const QuizCard = ({ setSearchInput, searchInput }) => {
             // allQuiz.category.toUpperCase().includes(searchInput)
         );
 
+        const startExam =async(quizId) =>{
+          try {
+            const res = await axios.get(`http://localhost:3002/exam/${quizId}`,{
+              headers:{
+                Authorization: `Bearer ${token}`
+              }
+            })
+            if(res.data.status === 'success'){
+              dispatch(startQuiz(res.data.data))
+               navigate('/start-exam') 
+            }
+          } catch (error) {
+            console.log(error)
+          }
+          // console.log(quizId)
+        }
+
   return (
     <div className="pb-5 px-10 pt-10">
       <h1 className="text-4xl font-[sans] text-[#1E293B] text-center">
@@ -83,9 +103,10 @@ const QuizCard = ({ setSearchInput, searchInput }) => {
                         <div className="quiz-name-card">
                           <h1 className="text-xl">{quiz.name}</h1>
                         </div>
+                        <div className="bottom-line"></div>
                         <div
                           className="quiz-card"
-                          onClick={() => console.log("working")}
+                          // onClick={()=>startExam(quiz._id)}
                         >
                           <h1 className="text-xl">{quiz.name}</h1>
                           <h3>
@@ -95,6 +116,7 @@ const QuizCard = ({ setSearchInput, searchInput }) => {
                             Passing Percentage:{" "}
                             <span>{quiz.passingPercentage}%</span>
                           </h4>
+                          <button className="start-quiz-btn" onClick={()=>startExam(quiz._id)}>Start Exam</button>
                         </div>
                       </div>
                     )}

@@ -105,14 +105,14 @@ const CreateQuiz = () => {
     };
     setQuestionList([...questionList, questionData]);
     setAnswers({ ...answers, [questionDetails.questionNumber]: answer });
-    setQuestionDetails({
-      questionNumber: "",
-      question: "",
-      option1: "",
-      option2: "",
-      option3: "",
-      option4: "",
-    });
+    // setQuestionDetails({
+    //   questionNumber: "",
+    //   question: "",
+    //   option1: "",
+    //   option2: "",
+    //   option3: "",
+    //   option4: "",
+    // });
     // console.log(questionDetails);
     // console.log(answers)
   };
@@ -130,185 +130,171 @@ const CreateQuiz = () => {
   };
 
   return (
-    <div className="py-3 px-6">
-      <div className="flex flex-col items-center my-12 p-4">
-        {/* <img src="https://i.gifer.com/P54U.gif" alt="" width={200} /> */}
-        <div className="flex justify-between w-11/12 p-4 border-b-2">
-          <h1 className="text-[#94A3B8] text-xl">
-            Quiz Name:{" "}
-            <span className="text-[#164E63]">{quizDetails.quizName} </span>
-          </h1>
-          <h1 className="text-[#94A3B8] text-xl">
-            Category:{" "}
-            <span className="text-[#164E63]">{quizDetails.category} </span>
-          </h1>
-        </div>
-
-        <div className="w-11/12 p-4 bg-[#FFEDD5]">
-          {/* <div> */}
-          <div className="flex flex-col gap-1">
-            <label>Question Number</label>
-            <input
-              type="number"
-              className="bg-[#E5E5E5] h-12 w-[15%] rounded-md px-2 inputFocus"
-              // onChange={(e) => setQuestionNumber(e.target.value)}
-              onChange={inputHandler}
-              value={questionDetails.questionNumber}
-              name="questionNumber"
-            />
-          </div>
-          <div className="flex flex-col gap-1 mt-4">
-            <label>Question</label>
-            <textarea
-              rows={4}
-              cols={50}
-              className="bg-[#E5E5E5] rounded-md p-2 inputFocus"
-              placeholder="Question"
-              // onChange={(e) => setQuestion(e.target.value)}
-              onChange={inputHandler}
-              value={questionDetails.question}
-              name="question"
-            />
-          </div>
-          <div className="flex flex-col gap-1 mt-4">
-            <h1>Provide 4 options and mark right answer</h1>
-            <div>
-              <div
-                className={`flex items-center justify-between mt-2 pl-5 pr-3 py-2 rounded-md ${
-                  isSelected === 1 ? "bg-[#4ADE80]" : ""
-                }`}
-              >
-                <input
-                  type="radio"
-                  className={`${isSelected === 1 ? "inputRadio" : ""}  `}
-                  name="question_options"
-                  value="1"
-                  onChange={radioInputHandler}
-                />
-                <div className="flex items-center gap-1 w-full">
-                  <h1>Option 1:</h1>
-                  <input
-                    type="text"
-                    className="option-input w-[80%] ml-1 inputFocus"
-                    onChange={inputHandler}
-                    value={questionDetails.option1}
-                    name="option1"
-                    placeholder="Option 1"
-                  />
-                </div>
-                {/* <input type="radio" className="mr-6" name="question_options"/> */}
-              </div>
-              <div
-                className={`flex items-center justify-between mt-2 pl-5 pr-3 py-2 rounded-md ${
-                  isSelected === 2 ? "bg-[#4ADE80]" : ""
-                }`}
-              >
-                <input
-                  type="radio"
-                  className={`${isSelected === 2 ? "inputRadio" : ""}  `}
-                  name="question_options"
-                  value="2"
-                  onChange={radioInputHandler}
-                />
-                <div className="flex items-center gap-1 w-full">
-                  <h1>Option 2:</h1>
-                  <input
-                    type="text"
-                    className="option-input w-[80%] inputFocus"
-                    onChange={inputHandler}
-                    value={questionDetails.option2}
-                    name="option2"
-                    placeholder="Option 2"
-                  />
-                </div>
-              </div>
-              <div
-                className={`flex items-center justify-between mt-2 pl-5 pr-3 py-2 rounded-md ${
-                  isSelected === 3 ? "bg-[#4ADE80]" : ""
-                }`}
-              >
-                <input
-                  type="radio"
-                  className={`${isSelected === 3 ? "inputRadio" : ""}  `}
-                  name="question_options"
-                  value="3"
-                  onChange={radioInputHandler}
-                />
-                <div className="flex items-center gap-1 w-full">
-                  <h1>Option 3:</h1>
-                  <input
-                    type="text"
-                    className="option-input w-[80%] inputFocus"
-                    onChange={inputHandler}
-                    value={questionDetails.option3}
-                    name="option3"
-                    placeholder="Option 3"
-                  />
-                </div>
-              </div>
-              <div
-                className={`flex items-center justify-between mt-2 pl-5 pr-3 py-2 rounded-md ${
-                  isSelected === 4 ? "bg-[#4ADE80]" : ""
-                }`}
-              >
-                <input
-                  type="radio"
-                  className={`${isSelected === 4 ? "inputRadio" : ""}  `}
-                  name="question_options"
-                  value="4"
-                  onChange={radioInputHandler}
-                />
-                <div className="flex items-center gap-1 w-full">
-                  <h1>Option 4:</h1>
-                  <input
-                    type="text"
-                    className="option-input w-[80%] inputFocus"
-                    onChange={inputHandler}
-                    value={questionDetails.option4}
-                    name="option4"
-                    placeholder="Option 4"
-                  />
-                </div>
-              </div>
-              {/* <div className="flex items-center gap-2 my-2">
-                  <h1>Option 2:</h1>
-                  <input
-                    type="text"
-                    className="bg-[#E5E5E5] h-12 rounded-md px-2"
-                  />
-                </div>
-                <div className="flex items-center gap-2 my-2">
-                  <h1>Option 3:</h1>
-                  <input
-                    type="text"
-                    className="bg-[#E5E5E5] h-12 rounded-md px-2"
-                  />
-                </div>
-                <div className="flex items-center gap-2 my-2">
-                  <h1>Option 4:</h1>
-                  <input
-                    type="text"
-                    className="bg-[#E5E5E5] h-12 rounded-md px-2"
-                  />
-                </div> */}
-            </div>
-          </div>
-          {/* </div> */}
-          <div className="flex justify-center p-4 mt-4">
-            <button className="quiz-button" onClick={addQuestionHandler}>
-              Add Question
-            </button>
-          </div>
-        </div>
-
-        <div>
-          <button className="quiz-button mr-2" onClick={saveQuizDataHandler}>
-            Save
-          </button>
-          <button className="quiz-button">Save and Publish</button>
-        </div>
-      </div>
+    <div>
+      
     </div>
+    // <div className="py-3 px-6">
+    //   <div className="flex flex-col items-center my-12 p-4">
+    //     {/* <img src="https://i.gifer.com/P54U.gif" alt="" width={200} /> */}
+    //     <div className="flex justify-between w-11/12 p-4 border-b-2">
+    //       <h1 className="text-[#94A3B8] text-xl">
+    //         Quiz Name:{" "}
+    //         <span className="text-[#164E63]">{quizDetails.quizName} </span>
+    //       </h1>
+    //       <h1 className="text-[#94A3B8] text-xl">
+    //         Category:{" "}
+    //         <span className="text-[#164E63]">{quizDetails.category} </span>
+    //       </h1>
+    //     </div>
+
+    //     <div className="w-3/4 p-4 bg-[#fff]">
+    //       {/* <div> */}
+    //       <div className="flex flex-col gap-1">
+    //         {/* <label>Question Number</label> */}
+    //         <input
+    //           type="number"
+    //           className="bg-[#E5E5E5] border-b-black border-b-2 h-12 w-[15%] rounded-md px-2 inputFocus"
+    //           // onChange={(e) => setQuestionNumber(e.target.value)}
+    //           onChange={inputHandler}
+    //           value={questionDetails.questionNumber}
+    //           name="questionNumber"
+    //           placeholder="Question no."
+    //         />
+    //       </div>
+    //       <div className="flex flex-col gap-1 mt-4">
+    //         {/* <label>Question</label> */}
+    //         <textarea
+    //           rows={2}
+    //           cols={50}
+    //           className="inputFocus"
+    //           placeholder="Question"
+    //           // onChange={(e) => setQuestion(e.target.value)}
+    //           onChange={inputHandler}
+    //           value={questionDetails.question}
+    //           name="question"
+    //         />
+    //       </div>
+    //       <div className="flex flex-col gap-1 mt-4">
+    //         {/* <h1>Provide 4 options and mark right answer</h1> */}
+    //         <div>
+    //           <div
+    //             className={`flex items-center justify-between mt-2 pr-3 py-2 rounded-md gap-2 ${
+    //               isSelected === 1 ? "bg-[#4ADE80]" : ""
+    //             }`}
+    //           >
+    //             <input
+    //               type="radio"
+    //               className={`${isSelected === 1 ? "inputRadio" : ""}  `}
+    //               name="question_options"
+    //               value="1"
+    //               onChange={radioInputHandler}
+    //             />
+    //             <div className="flex items-center gap-1 w-full">
+    //               {/* <h1>Option 1:</h1> */}
+    //               <input
+    //                 type="text"
+    //                 className="option-input w-[80%] inputFocus"
+    //                 onChange={inputHandler}
+    //                 value={questionDetails.option1}
+    //                 name="option1"
+    //                 placeholder="Option 1"
+    //               />
+    //             </div>
+    //             {/* <input type="radio" className="mr-6" name="question_options"/> */}
+    //           </div>
+    //           <div
+    //             className={`flex items-center justify-between mt-2 gap-2 pr-3 py-2 rounded-md ${
+    //               isSelected === 2 ? "bg-[#4ADE80]" : ""
+    //             }`}
+    //           >
+    //             <input
+    //               type="radio"
+    //               className={`${isSelected === 2 ? "inputRadio" : ""}  `}
+    //               name="question_options"
+    //               value="2"
+    //               onChange={radioInputHandler}
+    //             />
+    //             <div className="flex items-center gap-1 w-full">
+    //               {/* <h1>Option 2:</h1> */}
+    //               <input
+    //                 type="text"
+    //                 className="option-input w-[80%] inputFocus"
+    //                 onChange={inputHandler}
+    //                 value={questionDetails.option2}
+    //                 name="option2"
+    //                 placeholder="Option 2"
+    //               />
+    //             </div>
+    //           </div>
+    //           <div
+    //             className={`flex items-center justify-between gap-2 mt-2 pr-3 py-2 rounded-md ${
+    //               isSelected === 3 ? "bg-[#4ADE80]" : ""
+    //             }`}
+    //           >
+    //             <input
+    //               type="radio"
+    //               className={`${isSelected === 3 ? "inputRadio" : ""}  `}
+    //               name="question_options"
+    //               value="3"
+    //               onChange={radioInputHandler}
+    //             />
+    //             <div className="flex items-center gap-1 w-full">
+    //               {/* <h1>Option 3:</h1> */}
+    //               <input
+    //                 type="text"
+    //                 className="option-input w-[80%] inputFocus"
+    //                 onChange={inputHandler}
+    //                 value={questionDetails.option3}
+    //                 name="option3"
+    //                 placeholder="Option 3"
+    //               />
+    //             </div>
+    //           </div>
+    //           <div
+    //             className={`flex items-center justify-between mt-2 gap-2 pr-3 py-2 rounded-md ${
+    //               isSelected === 4 ? "bg-[#4ADE80]" : ""
+    //             }`}
+    //           >
+    //             <input
+    //               type="radio"
+    //               className={`${isSelected === 4 ? "inputRadio" : ""}  `}
+    //               name="question_options"
+    //               value="4"
+    //               onChange={radioInputHandler}
+    //             />
+    //             <div className="flex items-center gap-1 w-full">
+    //               {/* <h1>Option 4:</h1> */}
+    //               <input
+    //                 type="text"
+    //                 className="option-input w-[80%] inputFocus"
+    //                 onChange={inputHandler}
+    //                 value={questionDetails.option4}
+    //                 name="option4"
+    //                 placeholder="Option 4"
+    //               />
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       {/* <div className="flex justify-center p-4 mt-4">
+    //         <button className="quiz-button" onClick={addQuestionHandler}>
+    //           Add Question
+    //         </button>
+    //       </div> */}
+    //     </div>
+    //     <div className="flex justify-center p-4 mt-4">
+    //         <button className="quiz-button" onClick={addQuestionHandler}>
+    //           Add Question
+    //         </button>
+    //       </div>
+    //     <div>
+    //       <button className="quiz-button mr-2" onClick={saveQuizDataHandler}>
+    //         Save
+    //       </button>
+    //       <button className="quiz-button">Save and Publish</button>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 
