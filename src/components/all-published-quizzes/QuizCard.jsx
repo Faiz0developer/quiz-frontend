@@ -13,7 +13,6 @@ const QuizCard = ({ setSearchInput, searchInput }) => {
   const [allPublishedQuiz, setAllPublishedQuiz] = useState();
   const navigate = useNavigate()
 
-  console.log(searchInput);
   // const allPublishedQuiz = useSelector(
   //   (state) => state.allPublishedQuiz.publishedQuiz
   // );

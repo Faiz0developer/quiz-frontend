@@ -20,6 +20,7 @@ import MyQuizPage from "./pages/MyQuizPage";
 import SingleQuizPage from "./pages/SingleQuizPage";
 import AllPublishedQuizzesPage from "./pages/AllPublishedQuizzesPage";
 import StartExamPage from "./pages/StartExamPage";
+import FavoriteQuestionPage from "./pages/FavoriteQuestionPage";
 
 function App() {
   const [isSideBarVisibe, setIsSideBarVisibe] = useState(false);
@@ -55,12 +56,6 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/create-quiz-home" element={<CreateQuizPage />} />
                 <Route path="/create-new-quiz" element={<NewQuizPage />} />
-                <Route path="/report" element={<ReportPage />} />
-                <Route
-                  path="/change-password"
-                  element={<ChangePasswordPage />}
-                />
-                <Route path="/change-name" element={<ChangeNamePage />} />
                 <Route path="/my-quizzes" element={<MyQuizPage />} />
                 <Route
                   path="/my-quizzes/:quizId"
@@ -76,6 +71,13 @@ function App() {
                   element={<AllPublishedQuizzesPage />}
                 />
                 <Route path="/start-exam" element={<StartExamPage />} />
+                <Route path="/report" element={<ReportPage />} />
+                <Route path="/change-name" element={<ChangeNamePage />} />
+                <Route
+                  path="/change-password"
+                  element={<ChangePasswordPage />}
+                />
+                <Route path="/favorite-questions" element={<FavoriteQuestionPage />} />
               </Routes>
               {isSideBarVisibe && (
                 <div

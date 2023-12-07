@@ -8,6 +8,7 @@ const AllPublishQuizSection = () => {
   const allPublishedQuiz = useSelector(
     (state) => state.allPublishedQuiz.publishedQuiz
   );
+  
   return (
     <div className="all-quiz-container">
       <div>
@@ -74,7 +75,7 @@ const AllPublishQuizSection = () => {
       >
         {allPublishedQuiz.map((publishQuiz) => {
           return (
-            <div className="card">
+            <div className="card" key={publishQuiz._id}>
               <h1 className=" text-lg sm:text-xl text-[#701A75]">
                 {publishQuiz.name}
               </h1>

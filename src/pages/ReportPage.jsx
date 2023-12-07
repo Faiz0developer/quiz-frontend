@@ -14,8 +14,6 @@ const ReportPage = () => {
     (state) => state.allPublishedQuiz.publishedQuiz
   );
 
-  console.log(allPublishedQuiz);
-
   useEffect(() => {
     const fetchReportData = async () => {
       try {
@@ -25,7 +23,6 @@ const ReportPage = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(res.data.data);
         setAllReports(res.data.data);
         setTimeout(() => {
           setIsLoading(false);

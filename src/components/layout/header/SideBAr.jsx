@@ -37,6 +37,9 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
       setOnLogout(true);
     } else if (flag === "deactivate") {
       setOnDeactivate(true);
+    }else if(flag==='favorite'){
+      navigate("/favorite-questions");
+      setIsSideBarVisibe(false);
     }
   };
 
@@ -141,6 +144,7 @@ const SideBAr = ({ setIsSideBarVisibe, isSideBarVisibe, setLoggingOut }) => {
             icon=<MdOutlineFavorite className="text-[#0F172A]" />
             heading="Favourite"
             subHeading="Favorite Questions"
+            onClickHandler={() => clickHandler("favorite")}
           />
           <SidebarMenu
             icon=<MdOutlineDoNotDisturbOn className="text-[#0F172A]" />
