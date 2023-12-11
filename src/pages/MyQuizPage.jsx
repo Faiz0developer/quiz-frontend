@@ -39,7 +39,7 @@ const MyQuizPage = () => {
     };
 
     myQuizDataFetch();
-  }, []);
+  }, [token]);
 
   const singleQuizDataHandler = (quizId) => {
     navigate(`/my-quizzes/${quizId}`);

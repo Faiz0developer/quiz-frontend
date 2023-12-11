@@ -12,6 +12,7 @@ const SingleQuizPage = ({ setPublishing }) => {
   const myQuizzes = useSelector((state) => state.myQuiz.quizData);
   const param = useParams();
   const [isPublished, setIsPublished] = useState(false);
+  const [data, setData] = useState()
 
   const publishQuizHandler = async (quizId) => {
     const publishQuizId = {
@@ -38,27 +39,48 @@ const SingleQuizPage = ({ setPublishing }) => {
         }, [2000]);
       }
       console.log(res);
+      // if(res.)
     } catch (error) {
+      setPublishing(false);
       console.log(error);
     }
   };
 
-  const data = myQuizzes.find((myQuiz) => myQuiz._id === param.quizId);
+  useEffect(() => {
+    const fetchParticularQuizData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3002/quiz/${param.quizId}`,{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log(res)
+      if(res.data.status === 'success'){
+        setData(res.data.data)
+      }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchParticularQuizData()
+  },[])
+
+  // const data = myQuizzes.find((myQuiz) => myQuiz._id === param.quizId);
   return (
     <div className="relative flex flex-col py-10 px-3 sm:px-6 md:px-10">
       <div className="quiz-content">
-        {/* <div className="pb-6 px-4"> */}
         <div className="flex justify-between pb-6 px-0 md:px-4 text-[#164E63] text-sm sm:text-lg">
           <div>
             <h1>
-              Quiz Name: <span className="text-[#0E7490]">{data.name}</span>
+              Quiz Name: <span className="text-[#0E7490]">{data?.name}</span>
             </h1>
             <h1>
-              Category: <span className="text-[#0E7490]">{data.category}</span>
+              Category: <span className="text-[#0E7490]">{data?.category}</span>
             </h1>
             <h1>
               Published:{" "}
-              {data.isPublished ? (
+              {data?.isPublished ? (
                 <span className="text-[#0E7490]">Yes</span>
               ) : (
                 <span className="text-[#0E7490]">No</span>
@@ -68,18 +90,17 @@ const SingleQuizPage = ({ setPublishing }) => {
           <div>
             <h1>
               Passing Percentage:{" "}
-              <span className="text-[#0E7490]">{data.passingPercentage}%</span>
+              <span className="text-[#0E7490]">{data?.passingPercentage}%</span>
             </h1>
-            {data.isPublicQuiz ? (
+            {data?.isPublicQuiz ? (
               <h1 className="text-[#0E7490]">Public Quiz</h1>
             ) : (
               <h1 className="text-[#0E7490]">Private Quiz</h1>
             )}
           </div>
         </div>
-        {/* </div> */}
         <div>
-          {data.questionList.map((questionPack) => {
+          {data?.questionList.map((questionPack) => {
             return (
               <div key={questionPack._id} className="question-pack">
                 <h1 className="font-semibold">
@@ -94,20 +115,19 @@ const SingleQuizPage = ({ setPublishing }) => {
                 </div>
                 <h1 className="pt-1 text-[#14532D] font-semibold">
                   <span>answer: </span>{" "}
-                  {data.answers[questionPack.questionNumber]}
+                  {data?.answers[questionPack.questionNumber]}
                 </h1>
               </div>
             );
           })}
-          {/* <h1></h1> */}
         </div>
-        {data.isPublished || (
+        {data?.isPublished || (
           <div className="flex justify-center gap-3 pt-4 mt-4 h-[60px]">
             {" "}
             <button className="btns update-btn uppercase">Update</button>
             <button
               className="btns uppercase"
-              onClick={() => publishQuizHandler(data._id)}
+              onClick={() => publishQuizHandler(data?._id)}
             >
               Publish
             </button>

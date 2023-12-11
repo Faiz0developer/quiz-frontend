@@ -33,13 +33,13 @@ const FavoriteQuestionPage = () => {
     <div>
       {isLoading ? (
         <div className="flex justify-center items-center h-[80vh]">
-          <div class="my-quiz-loader-wrapper">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="shadow"></div>
-            <div class="shadow"></div>
-            <div class="shadow"></div>
+          <div className="my-quiz-loader-wrapper">
+            <div className="circle"></div>
+            <div className="circle"></div>
+            <div className="circle"></div>
+            <div className="shadow"></div>
+            <div className="shadow"></div>
+            <div className="shadow"></div>
             <span>Loading</span>
           </div>
         </div>

@@ -167,7 +167,7 @@ const LoginPage = () => {
           <div className="mt-6 relative">
             {isLoading ? (
               <div className="loading-container">
-                <div className="loading-text">
+                <div className="loading-text bg-[#fdba74]">
                   <span>L</span>
                   <span>O</span>
                   <span>A</span>
