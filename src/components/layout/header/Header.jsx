@@ -89,7 +89,7 @@ const Header = ({
   return (
     <header className="relative  flex justify-between px-6 items-center">
       <div className="header-container ">
-        <img src={myImg} alt="" width={100}/>
+        {/* <img src={myImg} alt="" width={100}/> */}
         {/* <video
           src={myImg}
           width="80"
@@ -99,7 +99,7 @@ const Header = ({
         /> */}
         <div className="small-screen">
           <TfiAlignJustify
-            className="text-3xl cursor-pointer"
+            className="text-xl cursor-pointer"
             onClick={() => setIsMobileView(!isMobileView)}
           />
           <GiHook className={`${isMobileView ? "hook-1" : "hook"}`} />
@@ -143,10 +143,11 @@ const Header = ({
             </div>
           )}
         </div>
+        <img src={myImg} alt="" width={100} className="min-[1000px]:ml-20"/>
       </div>
 
-      <div className="big-screen">
-        <ul className="flex items-center text-[#0F172A] gap-3 ">
+      <div className="big-screen ml-10">
+        <ul className="flex items-center text-[#0F172A] gap-2 ">
           <li>
             {/* <i className="fa-solid fa-house mr-1"></i> */}
             {/* <IoMdHome className="text-xl" /> */}
@@ -158,7 +159,6 @@ const Header = ({
             </NavLink>{" "}
           </li>
           <li>
-            {/* <MdQuiz className="text-xl" /> */}
             <NavLink
               to="/create-quiz-home"
               className={({ isActive }) => (isActive ? "active-1" : "")}
@@ -167,10 +167,8 @@ const Header = ({
             </NavLink>{" "}
           </li>
           <li
-            // className="flex gap-1 justify-center items-center py-2 cursor-pointer"
             onClick={() => getMyQuizzesHander("myQuiz")}
           >
-            {/* <GiCardQueenDiamonds className="text-xl" /> */}
             <NavLink
               to="/my-quizzes"
               className={({ isActive }) => (isActive ? "active-1" : "")}
@@ -179,8 +177,6 @@ const Header = ({
             </NavLink>{" "}
           </li>
           <li onClick={() => getMyQuizzesHander("AllQuiz")}>
-            {/* <i className="fa-brands fa-readme mr-1"></i> */}
-            {/* <AiTwotoneAppstore className="text-xl" /> */}
             <NavLink
               to="/all-published-quiz"
               className={({ isActive }) => (isActive ? "active-1" : "")}
@@ -188,9 +184,8 @@ const Header = ({
               <AiTwotoneAppstore className="text-xl" /> Take the quiz
             </NavLink>{" "}
           </li>
+          {/* <li><Link><MdQuiz className="text-xl" />Quiz</Link></li> */}
           <li>
-            {/* <i className="fa-brands fa-readme mr-1"></i> */}
-            {/* <AiOutlineIdcard className="text-xl" /> */}
             <NavLink
               to="/report"
               className={({ isActive }) => (isActive ? "active-1" : "")}

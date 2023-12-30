@@ -2,15 +2,15 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="hero h-[55vh]">
+    <div className="hero h-[55vh] font-[sans-serif]">
       {/* <div className="hero-left-content w-full  font-semibold"> */}
-        <h1 className="text-6xl lg:text-7xl py-2 font-[sans] tracking-wider font-semibold text-[#fff] text-center">
+        <h1 className="text-5xl lg:text-6xl uppercase pt-2 pb-3 tracking-wider font-semibold text-[#fff] text-center">
           Quiz!
         </h1>
-        <h2 className="text-6xl lg:text-7xl py-2 font-[sans] tracking-wider font-semibold text-[#fff] text-center">
+        <h2 className="text-5xl lg:text-6xl py-2 uppercase tracking-wider font-semibold text-[#fff] text-center">
           Take it or Create it
         </h2>
-        <p className="py-2 text-xl text-[#D97706] uppercase tracking-[4px] font-bold text-center">
+        <p className="py-2 text-xl text-[#D97706] tracking-[4px] font-bold text-center">
           Find your path to wellness
         </p>
       {/* </div> */}

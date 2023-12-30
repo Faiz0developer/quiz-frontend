@@ -35,7 +35,7 @@ const SingleQuizPage = ({ setPublishing }) => {
         setIsPublished(true);
         setTimeout(() => {
           setIsPublished(false);
-          navigate("/");
+          navigate("/my-quizzes");
         }, [2000]);
       }
       console.log(res);
@@ -99,6 +99,7 @@ const SingleQuizPage = ({ setPublishing }) => {
             )}
           </div>
         </div>
+
         <div>
           {data?.questionList.map((questionPack) => {
             return (
@@ -121,6 +122,7 @@ const SingleQuizPage = ({ setPublishing }) => {
             );
           })}
         </div>
+        
         {data?.isPublished || (
           <div className="flex justify-center gap-3 pt-4 mt-4 h-[60px]">
             {" "}
@@ -134,6 +136,7 @@ const SingleQuizPage = ({ setPublishing }) => {
           </div>
         )}
       </div>
+
       {isPublished && (
         <div className=" fixed top-0 left-0 w-full h-full bg-[#0000001a] z-10 absolute flex">
           <div className="publish">
@@ -144,6 +147,7 @@ const SingleQuizPage = ({ setPublishing }) => {
           </div>
         </div>
       )}
+      
       <h1 className="text-center mt-6"><span className="back-btn" onClick={() => navigate('/my-quizzes')}>back</span></h1>
     </div>
   );

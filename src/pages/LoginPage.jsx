@@ -5,7 +5,7 @@ import { LineWave, RotatingLines, ThreeDots } from "react-loader-spinner";
 
 import "../styles/login.css";
 import EyeButton from "../ui/EyeButton";
-import myImg from "../assets/Quizzle__6_-removebg-preview.png";
+import myImg from "../assets/Q-removebg-preview.png";
 import axios from "axios";
 import { setToken } from "../store/slice/tokenSlice";
 import { ToastContainer, toast } from "react-toastify";
@@ -49,7 +49,7 @@ const LoginPage = () => {
         }
       } else {
         toast.error("All fields are mandatory", {
-          position: "bottom-left",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -94,7 +94,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="bg-[#155E75] flex justify-center items-center h-[100vh]">
+    <div className="bg-[#FEF9C3] flex justify-center items-center h-[100vh]">
       <div className="content w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[30%] p-4 rounded-md">
         <div className="flex justify-center">
           {/* <video src={myImg} width="150" autoPlay muted /> */}
@@ -108,11 +108,11 @@ const LoginPage = () => {
         </div> */}
 
         <div className="flex items-center justify-center gap-3 w-full">
-          <div className="bg-[#FAFAF9] h-0.5 w-[35%] min-[772px]:w-[37%] mt-2"></div>
-          <h1 className="text-center text-[#FAFAF9] text-xl md:text-2xl w-[30%] min-[772px]:w-[26%]">
+          <div className="bg-[#9c4a45] h-0.5 w-[35%] min-[772px]:w-[37%] mt-2"></div>
+          <h1 className="text-center text-[#9c4a45] text-xl md:text-2xl w-[30%] min-[772px]:w-[26%]">
             Sign in
           </h1>
-          <div className="bg-[#FAFAF9] h-0.5 w-[35%] min-[772px]:w-[37%] mt-2"></div>
+          <div className="bg-[#9c4a45] h-0.5 w-[35%] min-[772px]:w-[37%] mt-2"></div>
         </div>
 
         <form onSubmit={loginHandler}>
@@ -157,7 +157,7 @@ const LoginPage = () => {
               // onClick={() => navigate("/forgot-password")}
             >
               <span
-                className="cursor-pointer text-[#94A3B8] hover:underline hover:text-[#FECACA]"
+                className="cursor-pointer text-[#a35d59] hover:underline"
                 onClick={() => navigate("/forgot-password")}
               >
                 Forgot password?
@@ -201,10 +201,10 @@ const LoginPage = () => {
               pauseOnHover
               theme="light"
             />
-            <h1 className="text-center mt-3 text-[#FFF]">
-              Not Registred?{" "}
+            <h1 className="text-center mt-3 text-[#2e2c2c]">
+              Not registered?{" "}
               <span
-                className="text-[#94A3B8] hover:underline cursor-pointer hover:text-[#FECACA]"
+                className="text-[#a35d59] hover:underline cursor-pointer"
                 onClick={() => navigate("/user-register")}
               >
                 {" "}

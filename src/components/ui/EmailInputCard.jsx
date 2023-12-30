@@ -2,9 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { GiThink } from "react-icons/gi";
 import { RotatingLines } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 const EmailInputCard = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,7 +40,7 @@ const EmailInputCard = () => {
               : data[0].msg
           }`,
           {
-            position: "top-center",
+            position: "bottom-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -53,11 +55,12 @@ const EmailInputCard = () => {
     }
   };
   return (
-    <div className="bg-[#155E75] flex justify-center items-center ">
-      <div className="px-4 text-[#fff] py-28 w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[35%]">
+    <div className="bg-[#FEF9C3] flex justify-center items-center ">
+      <div className="px-4 text-[#9c4a45] py-28 w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[35%]">
         <div className="flex justify-center mb-10">
           <GiThink className="text-[100px]" />
         </div>
+
         <div className="p-2 mt-4">
           <h1 className="text-center text-2xl min-[500px]:text-3xl mb-3">
             Forgot your password
@@ -70,6 +73,7 @@ const EmailInputCard = () => {
 
         <div className="inputs flex flex-col gap-6 py-6 ">
           <input
+          className="text-[#fff]"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -77,8 +81,9 @@ const EmailInputCard = () => {
             placeholder="Email"
           />
         </div>
+
         <div className="relative flex justify-center mt-8">
-          <button className={`btn w-full`} onClick={forgotPasswrodHandler}>
+          <button className={`btn w-full text-[#fff]`} onClick={forgotPasswrodHandler}>
             Forgot Password
           </button>
           {isLoading ? (
@@ -108,6 +113,18 @@ const EmailInputCard = () => {
             theme="light"
           />
         </div>
+
+        <h1 className="text-center mt-4 text-[#0F172A]">
+          Or
+              {/* Have already an account?{" "} */}
+              <span
+                className="text-[#9c4a45] ml-1 hover:underline cursor-pointer"
+                onClick={() => navigate("/")}
+              >
+                {" "}
+                Login here!
+              </span>
+            </h1>
       </div>
     </div>
   );

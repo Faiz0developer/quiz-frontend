@@ -5,14 +5,13 @@ import { useSelector } from "react-redux";
 
 // import LoginPage from "./pages/LoginPage";
 // import RegisterPage from "./pages/RegisterPage";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/home/HomePage";
 import Header from "./components/layout/header/Header";
 import Footer from "./components/layout/footer/footer";
 import RegisterLogin from "./components/RegisterLogin";
 import SideBAr from "./components/layout/header/SideBAr";
 import CreateQuizPage from "./pages/CreateQuizPage";
 import ReportPage from "./pages/ReportPage";
-import NewQuizPage from "./pages/NewQuizPage";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
 import ChangeNamePage from "./pages/ChangeNamePage";
 import LogoutModel from "./components/LogoutModel";
@@ -55,7 +54,6 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/create-quiz-home" element={<CreateQuizPage />} />
-                <Route path="/create-new-quiz" element={<NewQuizPage />} />
                 <Route path="/my-quizzes" element={<MyQuizPage />} />
                 <Route
                   path="/my-quizzes/:quizId"

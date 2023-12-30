@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import EyeButton from "../ui/EyeButton";
-import myImg from "../assets/Quizzle__6_-removebg-preview.png";
+import myImg from "../assets/Q-removebg-preview.png";
 import { useDispatch } from "react-redux";
 import { userRegister } from "../store/slice/registerSlice";
 import { RotatingLines } from "react-loader-spinner";
@@ -84,7 +84,7 @@ const RegisterPage = () => {
         }
       } else {
         toast.error("Provide all fields", {
-          position: "bottom-left",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -114,15 +114,15 @@ const RegisterPage = () => {
     }
   };
   return (
-    <div className="bg-[#155E75] flex justify-center  items-center h-[100vh]">
-      <div className=" w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[30%] p-4 rounded-md">
+    <div className="bg-[#FEF9C3] flex justify-center  items-center h-[100vh]">
+      <div className=" w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[30%] py-2 px-4 rounded-md">
         <div className="flex flex-col items-center">
           <img src={myImg} alt="" width={200} />
           {/* <video src={myImg} width="150" autoPlay muted /> */}
         </div>
 
-        <div className="mb-10">
-          <h1 className="text-center text-[#FAFAF9] text-xl md:text-2xl font-medium">
+        <div className="mb-6">
+          <h1 className="text-center text-[#9c4a45] text-xl md:text-2xl font-medium">
             CREATE ACCOUNT
           </h1>
         </div>
@@ -219,20 +219,23 @@ const RegisterPage = () => {
             </div>
           </div>
           <div className="mt-8 relative">
-            <button className="btn w-full text-[#fff]">Create Account</button>
             {isLoading ? (
-              <div className="loader">
-                <RotatingLines
-                  // strokeColor="grey"
-                  strokeColor="#064E3B"
-                  strokeWidth="5"
-                  animationDuration="0.75"
-                  width="30"
-                  visible={true}
-                />
+              <div className="loading-container">
+                <div className="loading-text bg-[#fdba74]">
+                  <span>L</span>
+                  <span>O</span>
+                  <span>A</span>
+                  <span>D</span>
+                  <span>I</span>
+                  <span>N</span>
+                  <span>G</span>
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                </div>
               </div>
             ) : (
-              ""
+              <button className="btn w-full text-[#fff]">Create Account</button>
             )}
             <ToastContainer
               position="top-center"
@@ -246,10 +249,10 @@ const RegisterPage = () => {
               pauseOnHover
               theme="light"
             />
-            <h1 className="text-center mt-4 text-[#FFF]">
+            <h1 className="text-center mt-4 text-[#0F172A]">
               Have already an account?{" "}
               <span
-                className="text-[#94A3B8] hover:underline cursor-pointer hover:text-[#FECACA]"
+                className="text-[#9c4a45] hover:underline cursor-pointer"
                 onClick={() => navigate("/")}
               >
                 {" "}

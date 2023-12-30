@@ -6,10 +6,10 @@ import { useSelector } from "react-redux";
 // import Footer from "../components/layout/footer/footer";
 // import myImg from "../assets/quiz4.mp4";
 
-import "../styles/home.css";
+import "../../styles/home.css";
 // import { useNavigate } from "react-router-dom";
-import Hero from "../components/home/Hero";
-import AllPublishQuizSection from "../components/home/AllPublishQuizSection";
+import Hero from "../../components/home/Hero";
+import AllPublishQuizSection from "../../components/home/AllPublishQuizSection";
 
 const HomePage = () => {
   // const token = useSelector(state => state.token.token)

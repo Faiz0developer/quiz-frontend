@@ -8,7 +8,7 @@
   /* background-color: #FEF9C3; */
   /* top: -100px; */
   /* z-index: 50; */
-  padding: 30px 0px 160px;
+  padding: 0px 0px 160px;
 }
 
 .start-quiz-card-container {
@@ -78,7 +78,7 @@
     border-image: radial-gradient(rgb(14,0,0) 69%, rgba(1,0,0,0) 70%) 84.5% fill/100%; 
 }
 
-.start-quiz-container>button{
+.submit-btn{
   position: relative;
   text-transform: uppercase;
   background-color: #164E63;

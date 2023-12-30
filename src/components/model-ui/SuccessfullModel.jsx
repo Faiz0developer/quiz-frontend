@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AiFillRightCircle,
   //   AiOutlineCheck,
@@ -11,24 +11,37 @@ const BackDrop = (props) => {
   return <div className="backdrop" />;
 };
 
-const ModelOverlay = ({successMessage, subTitle, optionalMessage}) => {
+const ModelOverlay = ({
+  successMessage,
+  subTitle,
+  optionalMessage,
+  isExamSubmitted,
+}) => {
   const navigate = useNavigate();
   return (
-    <div className="modal w-[80%] md:w-1/2 h-[400px] left-[10%] md:left-[25%] top-[20vh] font-[karla]">
+    <div className="modal w-[80%] md:w-[40%] h-[400px] left-[10%] md:left-[25%] top-[20vh] font-[karla]">
       <div className="flex flex-col items-center mt-8">
         {/* <AiOutlineCheck className="bg-[#16A34A] w-12 h-12 p-1.5 rounded-full" /> */}
         <AiOutlineCheckCircle className="bg-[#16A34A] w-12 h-12 p-1.5 rounded-full" />
-        <div className="py-4">
-          <h1 className="text-center text-2xl min-[550px]:text-4xl my-2">
+        <div className="pb-2 pt-4">
+          <h1 className="text-center text-xl min-[550px]:text-2xl my-2">
             Successfully
           </h1>
           <p className="text-lg min-[550px]:text-xl text-center">
             {successMessage}
           </p>
-          <p className="text-center">{optionalMessage}</p>
+          <p className={`text-center ${isExamSubmitted && "text-xl"}`}>{optionalMessage}</p>
         </div>
-        <div className="p-4 flex flex-col items-center gap-2">
-          <h1 className="text-lg min-[550px]:text-xl text-center">
+        <div className="py-2 px-4 flex flex-col items-center gap-2">
+          {isExamSubmitted && (
+            <>
+              <h1 className="text-base min-[550px]:text-lg text-center">
+                Check Result <Link to="/report" className="text-[#64748B] hover:text-[#701A75] underline">here</Link>
+              </h1>
+              <p>or</p>
+            </>
+          )}
+          <h1 className="text-base min-[550px]:text-lg text-center">
             {subTitle}
           </h1>
           <AiFillRightCircle
@@ -41,7 +54,12 @@ const ModelOverlay = ({successMessage, subTitle, optionalMessage}) => {
   );
 };
 
-const OTPModel = ({successMessage, subTitle,optionalMessage}) => {
+const OTPModel = ({
+  successMessage,
+  subTitle,
+  optionalMessage,
+  isExamSubmitted,
+}) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
@@ -49,7 +67,12 @@ const OTPModel = ({successMessage, subTitle,optionalMessage}) => {
         document.getElementById("backdrop_root")
       )}
       {ReactDOM.createPortal(
-        <ModelOverlay successMessage={successMessage} subTitle={subTitle} optionalMessage={optionalMessage} />,
+        <ModelOverlay
+          successMessage={successMessage}
+          subTitle={subTitle}
+          optionalMessage={optionalMessage}
+          isExamSubmitted={isExamSubmitted}
+        />,
         document.getElementById("overlay_root")
       )}
     </React.Fragment>

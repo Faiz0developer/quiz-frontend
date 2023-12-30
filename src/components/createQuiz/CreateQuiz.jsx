@@ -68,8 +68,6 @@ const CreateQuiz = () => {
 
   const optionsHandler = (e, index) => {
     const value = e.target.value;
-    // const numVal = +value
-    // console.log(typeof numVal)
     setAnswers({ ...answers, [index + 1]: Number(value) });
     setIsSelected(String(index)+value);
   };
@@ -179,7 +177,6 @@ const CreateQuiz = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                {/* <option value="Category">Category</option> */}
                 <option value="exam">Exam</option>
                 <option value="test">Test</option>
               </select>
@@ -224,10 +221,8 @@ const CreateQuiz = () => {
               <input
                 type="checkbox"
                 defaultChecked
-                // value={isPublicQuiz}
                 ref={radioRef}
                 onChange={checkBoxHandler}
-                // onChange={() => setIsPublicQuiz(!isPublicQuiz)}
                 className="cursor-pointer"
               />
             )}
@@ -256,7 +251,6 @@ const CreateQuiz = () => {
                     renderArrowsWhenDisabled={false}
                     renderButtonGroupOutside={false}
                     renderDotsOutside={false}
-                    // responsive={responsive}
                     responsive={{
                       desktop: {
                         breakpoint: {
@@ -368,7 +362,7 @@ const CreateQuiz = () => {
               </div>
               <div>
                 <div
-                  className={`flex items-center justify-between mt-2 py-2 pr-1.5 gap-2 ${
+                  className={`flex items-center justify-between mt-2 py-2 px-1.5 gap-2 ${
                     isSelected.includes(String(index)+1) ? "bg-[#4ADE80]" : ""
                   }`}
                 >
@@ -390,7 +384,7 @@ const CreateQuiz = () => {
                   </div>
                 </div>
                 <div
-                  className={`flex items-center justify-between mt-2 py-2 pr-1.5 gap-2 ${
+                  className={`flex items-center justify-between mt-2 py-2 px-1.5 gap-2 ${
                     isSelected.includes(String(index)+2) ? "bg-[#4ADE80]" : ""
                   }`}
                 >
@@ -412,7 +406,7 @@ const CreateQuiz = () => {
                   </div>
                 </div>
                 <div
-                  className={`flex items-center justify-between mt-2 py-2 pr-1.5 gap-2 ${
+                  className={`flex items-center justify-between mt-2 py-2 px-1.5 gap-2 ${
                     isSelected.includes(String(index)+3) ? "bg-[#4ADE80]" : ""
                   }`}
                 >
@@ -434,7 +428,7 @@ const CreateQuiz = () => {
                   </div>
                 </div>
                 <div
-                  className={`flex items-center justify-between mt-2 py-2 pr-1.5 gap-2 ${
+                  className={`flex items-center justify-between mt-2 py-2 px-1.5 gap-2 ${
                     isSelected.includes(String(index)+4) ? "bg-[#4ADE80]" : ""
                   }`}
                 >
@@ -456,7 +450,6 @@ const CreateQuiz = () => {
                   </div>
                 </div>
               </div>
-              {/* <button onClick={() => addQuestionData(index)}>Submit</button> */}
             </div>
           );
         })}
@@ -467,11 +460,13 @@ const CreateQuiz = () => {
           </span>
         </div>
       </div>
+
       <h1 className="text-center px-4 py-2 mt-10">
         <span onClick={createQuizHandler} className="quiz-button">
           Create Quiz
         </span>
       </h1>
+      
       <ToastContainer
         position="bottom-center"
         autoClose={5000}

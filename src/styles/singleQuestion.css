@@ -40,7 +40,7 @@
     margin-top: 450px;
     justify-content: center;
     gap: 10px;
-    font-size: 40px;
+    font-size: 30px;
     color: #15803D;
     width: 100%;
     transition: all 1s ease-in-out;
@@ -61,7 +61,7 @@
 
 @media screen and (max-width:600px) {
     .publish{
-        font-size: 30px;
+        font-size: 20px;
     }
     .btns{
         width: auto;

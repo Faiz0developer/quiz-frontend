@@ -33,7 +33,7 @@
 .hook {
   position: absolute;
   top: 53px;
-  left: 168px;
+  left: 164px;
   font-size: 34px;
   z-index: 50;
   transform-origin: 50% 0;
@@ -45,7 +45,7 @@
 .hook-1 {
   position: absolute;
   top: 57px;
-  left: 168px;
+  left: 164px;
   font-size: 34px;
   z-index: 50;
   transform-origin: 50% 0;
@@ -62,16 +62,16 @@
   border-radius: 50%;
   top: 8px;
   z-index: 30;
-  left: 68px;
-  /* transform-origin: 50% 0;
-  animation: holeMoveIt 1.5s ease-in-out 1; */
+  left: 64px;
+  transform-origin: 50% 0;
+  animation: holeMoveIt 2.5s ease-in-out 1;
 }
 
 .mobile-view {
   position: absolute;
   border-radius: 40px;
   z-index: 20;
-  left: 113px;
+  left: 109px;
   top: 72px;
   background-color: #134e4a;
   padding: 20px;

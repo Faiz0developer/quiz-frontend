@@ -126,6 +126,7 @@ const MyQuizPage = () => {
               </div> */}
             </div>
           </div>
+          
           <div className="my-quiz-card-container px-4 my-12 pt-2">
             {quizData?.length ? (
               <>

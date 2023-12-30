@@ -59,7 +59,7 @@ const VerifyOtpPage = () => {
     } catch (error) {
       if (error.response.data.status === "error") {
         toast.error(`${error.response.data.message}`, {
-          position: "top-center",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -109,7 +109,7 @@ const VerifyOtpPage = () => {
       }, 1000);
       if (data.status === "success") {
         toast.success("Email sent", {
-          position: "top-center",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -137,11 +137,11 @@ const VerifyOtpPage = () => {
   };
 
   return (
-    <div className="bg-[#155E75]">
-      <div className="flex flex-col justify-center items-center px-4 text-[#fff] py-20 gap-6">
+    <div className="bg-[#FEF9C3]">
+      <div className="flex flex-col justify-center items-center px-4 text-[#9c4a45] py-20 gap-6">
         <BsShieldLockFill className="text-[100px]" />
         <div className="p-2">
-          <h1 className="text-center text-2xl min-[350px]:text-3xl mb-3">
+          <h1 className="text-center text-2xl min-[350px]:text-3xl mb-3 text-[9c4a45]">
             OTP Verification
           </h1>
           <p className="text-lg py-2 text-center">
@@ -149,6 +149,7 @@ const VerifyOtpPage = () => {
             <span className="font-medium text-[#94A3B8]">{paddedEmail}</span>{" "}
           </p>
         </div>
+
         <div className="input-container flex gap-2 min-[350px]:gap-4 sm:gap-6 p-2">
           <input
             type="text"
@@ -187,6 +188,7 @@ const VerifyOtpPage = () => {
             name="f"
           />
         </div>
+
         <div className="flex flex-col items-center p-3">
           <h3 className="text-[#9CA3AF] text-lg">Didn't recieve an OTP?</h3>
           <div className="flex items-center gap-1 mt-1 w-[170px]">
@@ -212,9 +214,10 @@ const VerifyOtpPage = () => {
             theme="light"
           />
         </div>
+        
         <div className="w-1/2 md:w-1/4 relative">
           <button
-            className={`btn w-full`}
+            className={`btn w-full text-[#fff]`}
             onClick={verifyOTPHandler}
           >
             Verify

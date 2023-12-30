@@ -13,7 +13,7 @@ import { PiCopyrightLight } from "react-icons/pi";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#3f6c78] pt-3">
+    <footer className="bg-[#e7d1b3] pt-3">
       <div className="top-container">
         <img src={myImg} alt="" width={100} />
         {/* <ul className="flex items-center mt-2.5 gap-4">
@@ -28,7 +28,7 @@ const Footer = () => {
         <FaFacebook />
         <FaInstagramSquare />
       </div>
-      <h1 className="text-center pt-4 bg-[#3f6c78] pb-2">
+      <h1 className="text-center pt-4 bg-[#e7d1b3] pb-2">
         Copyright &copy; 2023 Quizzle. All rights reserved.
       </h1>
       {/* <video

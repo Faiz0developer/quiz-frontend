@@ -13,7 +13,7 @@ const AllPublishQuizSection = () => {
     <div className="all-quiz-container">
       <div>
         <h1 className="text-center text-5xl font-medium text-[#8d2214] font-[sans-serif]">Quizzes</h1>
-        <p className="text-center text-2xl py-2 text-[#b64c3e] font-[sans] tracking-wider">
+        <p className="text-center text-2xl py-2 text-[#b64c3e] tracking-wider">
           Take the <span className="text-[#e7a599]">Quiz</span> of your{" "}
           <span className="text-[#e7a599]">choice</span>
         </p>
@@ -79,7 +79,7 @@ const AllPublishQuizSection = () => {
               <h1 className=" text-lg sm:text-xl text-[#701A75]">
                 {publishQuiz.name}
               </h1>
-              <h1 className="text-[#0F172A]">{publishQuiz.category}</h1>
+              <h1 className="text-[#0F172A] capitalize">{publishQuiz.category}</h1>
             </div>
           );
         })}

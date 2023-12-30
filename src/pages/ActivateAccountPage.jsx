@@ -47,7 +47,7 @@ const ActivateAccountPage = () => {
         }
       } else {
         toast.error("Provide all fields", {
-          position: "bottom-left",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -61,7 +61,7 @@ const ActivateAccountPage = () => {
       const { data } = error.response;
       if (data.status === "error") {
         toast.error(`${data.message}`, {
-          position: "bottom-left",
+          position: "bottom-center",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -75,16 +75,18 @@ const ActivateAccountPage = () => {
     }
   };
   return (
-    <div className="bg-[#155E75] flex justify-center items-center ">
-      <div className="px-4 text-[#fff] py-28 w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[30%]">
+    <div className="bg-[#FEF9C3] flex justify-center items-center ">
+      <div className="px-4 text-[#9c4a45] py-28 w-[90%] min-[350px]:w-[80%] min-[500px]:w-[60%] md:w-[40%] lg:w-[30%]">
         <div className="flex justify-center mb-10">
           <BsShieldLockFill className="text-[100px]" />
         </div>
+
         <div className="p-2 mt-4">
           <h1 className="text-center text-2xl min-[500px]:text-3xl mb-3">
             Activate Your Account
           </h1>
         </div>
+
         <div className="inputs flex flex-col gap-6 py-6 ">
           <div className="relative">
             <input
@@ -92,7 +94,7 @@ const ActivateAccountPage = () => {
               onChange={inputHandler}
               value={activationDetails.email}
               name="email"
-              className={`${
+              className={`text-[#fff] ${
                 activationDetails.email === "" &&
                 isEmailTouched &&
                 "input-error"
@@ -121,8 +123,9 @@ const ActivateAccountPage = () => {
             )}
           </div>
         </div>
+
         <div className="relative flex justify-center mt-8">
-          <button className={`btn w-full`} onClick={activateAccountHandler}>
+          <button className={`btn w-full text-[#fff]`} onClick={activateAccountHandler}>
             Activate Account
           </button>
           {isActivating ? (
@@ -152,6 +155,7 @@ const ActivateAccountPage = () => {
             theme="light"
           />
         </div>
+        
       </div>
       {isActivate && (
         <OTPModel
